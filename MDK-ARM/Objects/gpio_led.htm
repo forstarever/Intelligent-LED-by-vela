@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\gpio_led.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\gpio_led.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Wed Dec 27 15:45:10 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Wed Jan 17 13:58:44 2024
 <BR><P>
-<H3>Maximum Stack Usage =         64 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =         72 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; U1_led_flash &rArr; send0 &rArr; delay_100ns &rArr; get_systick_ns
+main &rArr; U1_led_flash &rArr; reset &rArr; delay_us &rArr; get_systick_us
 <P>
 <H3>
 Mutually Recursive functions
@@ -136,7 +136,7 @@ Global Symbols
 <P><STRONG><a name="[65]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32f450_470.o(.text)
 </UL>
-<P><STRONG><a name="[81]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[80]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[67]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -146,17 +146,17 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[82]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[81]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[83]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[82]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[84]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[83]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[85]"></a>__rt_lib_shutdown_fini</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry12b.o(.ARM.Collect$$$$0000000E))
+<P><STRONG><a name="[84]"></a>__rt_lib_shutdown_fini</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry12b.o(.ARM.Collect$$$$0000000E))
 
-<P><STRONG><a name="[86]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[85]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000F))
 
-<P><STRONG><a name="[87]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$00000011))
+<P><STRONG><a name="[86]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$00000011))
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_gd32f450_470.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32f450_470.o(RESET)
@@ -488,10 +488,10 @@ Global Symbols
 <P><STRONG><a name="[a]"></a>WWDGT_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_gd32f450_470.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32f450_470.o(RESET)
 </UL>
-<P><STRONG><a name="[88]"></a>__aeabi_uidiv</STRONG> (Thumb, 0 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
+<P><STRONG><a name="[87]"></a>__aeabi_uidiv</STRONG> (Thumb, 0 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
 
-<P><STRONG><a name="[75]"></a>__aeabi_uidivmod</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<P><STRONG><a name="[79]"></a>__aeabi_uidivmod</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
 <P><STRONG><a name="[68]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
@@ -500,7 +500,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[89]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[88]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
 <P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 8 bytes, Stack size 4 bytes, platform_systick.o(i.SysTick_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = SysTick_Handler
@@ -516,57 +516,62 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32f450_470.o(.text)
 </UL>
-<P><STRONG><a name="[6c]"></a>U1_led_flash</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, test.o(i.U1_led_flash))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = U1_led_flash &rArr; send0 &rArr; delay_100ns &rArr; get_systick_ns
+<P><STRONG><a name="[6c]"></a>U1_led_flash</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, test.o(i.U1_led_flash))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = U1_led_flash &rArr; reset &rArr; delay_us &rArr; get_systick_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send0
-<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reset
+<BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reset
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_input_bit_get
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_reset
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[6f]"></a>U1_led_init</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, test.o(i.U1_led_init))
+<P><STRONG><a name="[73]"></a>U1_led_init</STRONG> (Thumb, 94 bytes, Stack size 8 bytes, test.o(i.U1_led_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = U1_led_init &rArr; gpio_output_options_set
 </UL>
-<BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_output_options_set
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_mode_set
+<BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_output_options_set
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_mode_set
 </UL>
 <BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[73]"></a>__0printf$1</STRONG> (Thumb, 22 bytes, Stack size 24 bytes, printf1.o(i.__0printf$1), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<P><STRONG><a name="[77]"></a>__0printf$1</STRONG> (Thumb, 22 bytes, Stack size 24 bytes, printf1.o(i.__0printf$1), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
-<P><STRONG><a name="[8a]"></a>__1printf$1</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf1.o(i.__0printf$1), UNUSED)
+<P><STRONG><a name="[89]"></a>__1printf$1</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf1.o(i.__0printf$1), UNUSED)
 
-<P><STRONG><a name="[7d]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf1.o(i.__0printf$1))
+<P><STRONG><a name="[71]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf1.o(i.__0printf$1))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U1_led_flash
 </UL>
 
-<P><STRONG><a name="[8b]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[8a]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[8c]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[8b]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[8d]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[8c]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[76]"></a>delay_100ns</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, platform_systick.o(i.delay_100ns))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = delay_100ns &rArr; get_systick_ns
+<P><STRONG><a name="[72]"></a>delay_ms</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, platform_systick.o(i.delay_ms))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = delay_ms &rArr; get_systick_ms
 </UL>
-<BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_systick_ns
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_init
+<BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_init
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_systick_ms
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send0
+<BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U1_led_flash
 </UL>
 
-<P><STRONG><a name="[79]"></a>delay_us</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, platform_systick.o(i.delay_us))
+<P><STRONG><a name="[7c]"></a>delay_us</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, platform_systick.o(i.delay_us))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = delay_us &rArr; get_systick_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_systick_us
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_init
+<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_systick_us
+<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reset
 </UL>
@@ -574,94 +579,81 @@ Global Symbols
 <P><STRONG><a name="[66]"></a>fputc</STRONG> (Thumb, 18 bytes, Stack size 12 bytes, test.o(i.fputc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = fputc &rArr; print_buf_putchar
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_buf_putchar
+<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_buf_putchar
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> printf1.o(i.__0printf$1)
 </UL>
-<P><STRONG><a name="[7c]"></a>get_systick_ms</STRONG> (Thumb, 54 bytes, Stack size 24 bytes, platform_systick.o(i.get_systick_ms))
+<P><STRONG><a name="[7b]"></a>get_systick_ms</STRONG> (Thumb, 54 bytes, Stack size 24 bytes, platform_systick.o(i.get_systick_ms))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = get_systick_ms
 </UL>
-<BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_init
+<BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[78]"></a>get_systick_ns</STRONG> (Thumb, 58 bytes, Stack size 24 bytes, platform_systick.o(i.get_systick_ns))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = get_systick_ns
-</UL>
-<BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_init
-</UL>
-<BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_100ns
+<BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[7a]"></a>get_systick_us</STRONG> (Thumb, 56 bytes, Stack size 24 bytes, platform_systick.o(i.get_systick_us))
+<P><STRONG><a name="[7d]"></a>get_systick_us</STRONG> (Thumb, 56 bytes, Stack size 24 bytes, platform_systick.o(i.get_systick_us))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = get_systick_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_init
+<BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
-</UL>
-
-<P><STRONG><a name="[7e]"></a>gpio_bit_reset</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, gd32f4xx_gpio.o(i.gpio_bit_reset))
-<BR><BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send0
-<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reset
+<BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
 
-<P><STRONG><a name="[7f]"></a>gpio_bit_set</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, gd32f4xx_gpio.o(i.gpio_bit_set))
-<BR><BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send0
+<P><STRONG><a name="[6f]"></a>gpio_bit_reset</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, gd32f4xx_gpio.o(i.gpio_bit_reset))
+<BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reset
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U1_led_flash
 </UL>
 
-<P><STRONG><a name="[71]"></a>gpio_mode_set</STRONG> (Thumb, 78 bytes, Stack size 20 bytes, gd32f4xx_gpio.o(i.gpio_mode_set))
+<P><STRONG><a name="[6e]"></a>gpio_bit_set</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, gd32f4xx_gpio.o(i.gpio_bit_set))
+<BR><BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U1_led_flash
+</UL>
+
+<P><STRONG><a name="[70]"></a>gpio_input_bit_get</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32f4xx_gpio.o(i.gpio_input_bit_get))
+<BR><BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U1_led_flash
+</UL>
+
+<P><STRONG><a name="[75]"></a>gpio_mode_set</STRONG> (Thumb, 78 bytes, Stack size 20 bytes, gd32f4xx_gpio.o(i.gpio_mode_set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = gpio_mode_set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U1_led_init
+<BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U1_led_init
 </UL>
 
-<P><STRONG><a name="[72]"></a>gpio_output_options_set</STRONG> (Thumb, 66 bytes, Stack size 20 bytes, gd32f4xx_gpio.o(i.gpio_output_options_set))
+<P><STRONG><a name="[76]"></a>gpio_output_options_set</STRONG> (Thumb, 66 bytes, Stack size 20 bytes, gd32f4xx_gpio.o(i.gpio_output_options_set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = gpio_output_options_set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U1_led_init
+<BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U1_led_init
 </UL>
 
 <P><STRONG><a name="[63]"></a>main</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, test.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = main &rArr; U1_led_flash &rArr; send0 &rArr; delay_100ns &rArr; get_systick_ns
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = main &rArr; U1_led_flash &rArr; reset &rArr; delay_us &rArr; get_systick_us
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reset
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_systick_ms
-<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U1_led_init
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_systick_ms
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U1_led_init
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U1_led_flash
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[7b]"></a>print_buf_putchar</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, test.o(i.print_buf_putchar))
+<P><STRONG><a name="[7e]"></a>print_buf_putchar</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, test.o(i.print_buf_putchar))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = print_buf_putchar
 </UL>
 <BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputc
 </UL>
 
-<P><STRONG><a name="[70]"></a>rcu_periph_clock_enable</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, gd32f4xx_rcu.o(i.rcu_periph_clock_enable))
-<BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U1_led_init
+<P><STRONG><a name="[74]"></a>rcu_periph_clock_enable</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, gd32f4xx_rcu.o(i.rcu_periph_clock_enable))
+<BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U1_led_init
 </UL>
 
 <P><STRONG><a name="[6d]"></a>reset</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, rgb.o(i.reset))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = reset &rArr; delay_us &rArr; get_systick_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_reset
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_reset
 </UL>
 <BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U1_led_flash
-</UL>
-
-<P><STRONG><a name="[6e]"></a>send0</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, rgb.o(i.send0))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = send0 &rArr; delay_100ns &rArr; get_systick_ns
-</UL>
-<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_reset
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_100ns
-</UL>
-<BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;U1_led_flash
 </UL>
 
 <P><STRONG><a name="[6a]"></a>systick_handler</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, platform_systick.o(i.systick_handler))
@@ -671,30 +663,29 @@ Global Symbols
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[77]"></a>systick_init</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, platform_systick.o(i.systick_init))
-<BR><BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_systick_us
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_systick_ns
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_100ns
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_systick_ms
+<P><STRONG><a name="[7a]"></a>systick_init</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, platform_systick.o(i.systick_init))
+<BR><BR>[Called By]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_systick_us
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_systick_ms
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
 
-<P><STRONG><a name="[80]"></a>system_clock_240m_irc16m</STRONG> (Thumb, 238 bytes, Stack size 0 bytes, system_gd32f4xx.o(i.system_clock_240m_irc16m))
+<P><STRONG><a name="[7f]"></a>system_clock_240m_irc16m</STRONG> (Thumb, 238 bytes, Stack size 0 bytes, system_gd32f4xx.o(i.system_clock_240m_irc16m))
 <BR><BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_clock_config
 </UL>
 
 <P><STRONG><a name="[6b]"></a>system_clock_config</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, system_gd32f4xx.o(i.system_clock_config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = system_clock_config
 </UL>
-<BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_clock_240m_irc16m
+<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_clock_240m_irc16m
 </UL>
 <BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 
-<P><STRONG><a name="[74]"></a>_printf_core</STRONG> (Thumb, 336 bytes, Stack size 88 bytes, printf1.o(i._printf_core), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
+<P><STRONG><a name="[78]"></a>_printf_core</STRONG> (Thumb, 336 bytes, Stack size 88 bytes, printf1.o(i._printf_core), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf$1
+<BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf$1
 </UL>
 <P>
 <H3>
