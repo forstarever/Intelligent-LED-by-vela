@@ -60,31 +60,39 @@ void U1_led_init() {
 
     //输入模式：
     rcu_periph_clock_enable(RCU_GPIOC);//PC11
-    gpio_mode_set(GPIOC, GPIO_MODE_INPUT, GPIO_PUPD_PULLUP, GPIO_PIN_11);//设置为输入模式，无上拉
+    gpio_mode_set(GPIOC, GPIO_MODE_INPUT, GPIO_PUPD_NONE, GPIO_PIN_11);//设置为输入模式，无上拉
 }
 void U1_led_flash() {
-
+//    // 测试PC10与PC11联通
+//    uint32_t i;
+//    uint32_t in_bit;
 //    reset(GPIOC, GPIO_PIN_10);
-    //reset(GPIOC, GPIO_PIN_10);
-   // reset(GPIOF, GPIO_PIN_4);
+//    for(i=0;i<10;i++){
+//        if(i&1)
+//            gpio_bit_set(GPIOC,GPIO_PIN_10);
+//        else
+//            gpio_bit_reset(GPIOC,GPIO_PIN_10);
+//        in_bit=gpio_input_bit_get(GPIOC, GPIO_PIN_11);//输入模式GPIO状态获取
+//        printf("%d\n",in_bit);
+//        if(in_bit)
+//            gpio_bit_set(GPIOF,GPIO_PIN_4);
+//        else
+//            gpio_bit_reset(GPIOF,GPIO_PIN_4);
+//        delay_ms(1000);
+//    }
+
     uint32_t i;
     uint32_t in_bit;
     reset(GPIOC, GPIO_PIN_10);
-    for(i=0;i<10;i++){
-        if(i&1)
-            gpio_bit_set(GPIOC,GPIO_PIN_10);
-        else
-            gpio_bit_reset(GPIOC,GPIO_PIN_10);
-        in_bit=gpio_input_bit_get(GPIOC, GPIO_PIN_11);//输入模式GPIO状态获取
-        printf("%d\n",in_bit);
-        gpio_bit_set(GPIOF,GPIO_PIN_4);
-        delay_ms(1000);
-        gpio_bit_reset(GPIOF,GPIO_PIN_4);
-        delay_ms(1000);
+    for(i=0;i<720;i++){
+        GPIO_BOP(GPIOC)=(uint32_t)GPIO_PIN_10;
+        ugly_816ns_delay();
+        GPIO_BC(GPIOC)=(uint32_t)GPIO_PIN_10;
+        ugly_416ns_delay();
+//        send0(GPIOC,GPIO_PIN_10);
+
     }
-        //send0(GPIOC, GPIO_PIN_10);
-//    GPIO_BOP(GPIOF) = (uint32_t)GPIO_PIN_4;
-//    delay_ms(1000);
+
 }
 
 
