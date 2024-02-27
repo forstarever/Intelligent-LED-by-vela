@@ -8,7 +8,6 @@ include_directories(GD32F4xx_Firmware_Library/CMSIS/GD/GD32F4xx/Include)
 include_directories(GD32F4xx_Firmware_Library/GD32F4xx_standard_peripheral/Include)
 
 add_executable(lab2_gpio_led
-        Application/main.c
         GD32F4xx_Firmware_Library/CMSIS/GD/GD32F4xx/Include/gd32f4xx.h
         GD32F4xx_Firmware_Library/CMSIS/GD/GD32F4xx/Include/gd32f4xx_libopt.h
         GD32F4xx_Firmware_Library/CMSIS/GD/GD32F4xx/Include/system_gd32f4xx.h
@@ -74,4 +73,4 @@ add_executable(lab2_gpio_led
         GD32F4xx_Firmware_Library/GD32F4xx_standard_peripheral/Source/gd32f4xx_tli.c
         GD32F4xx_Firmware_Library/GD32F4xx_standard_peripheral/Source/gd32f4xx_trng.c
         GD32F4xx_Firmware_Library/GD32F4xx_standard_peripheral/Source/gd32f4xx_usart.c
-        GD32F4xx_Firmware_Library/GD32F4xx_standard_peripheral/Source/gd32f4xx_wwdgt.c Application/delay.h Application/delay.c Application/ws2812_gd32_pwm.c Application/ws2812.h Application/amk_gpio.h Application/rgb_common.h Application/rgb_common.c Application/ws2812.c Application/test.c Application/platform_systick.h Application/platform_systick.c Application/RGB.c Application/RGB.h)
+        GD32F4xx_Firmware_Library/GD32F4xx_standard_peripheral/Source/gd32f4xx_wwdgt.c Application/led.c Application/platform_systick.h Application/platform_systick.c Application/RGB.c Application/RGB.h)

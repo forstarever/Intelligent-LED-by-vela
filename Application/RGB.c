@@ -4,32 +4,44 @@
 
 #include "RGB.h"
 
-void send0(uint32_t gpio_periph, uint32_t pin)
-{
-    gpio_bit_set(gpio_periph, pin);
-    delay_100ns(4);//400ns T0H
-    gpio_bit_reset(gpio_periph, pin);
-    delay_100ns(8);//T0L
+void ugly_860ns_delay(){
+    unsigned int cnt=30;
+    while(cnt)
+        cnt--;
 }
-void send1(uint32_t gpio_periph, uint32_t pin)
-{
-    gpio_bit_set(gpio_periph, pin);
-    delay_100ns(8);//T1H
-    gpio_bit_reset(gpio_periph, pin);
-    delay_100ns(4);//400ns T1L
+void ugly_325ns_delay(){
+    unsigned int cnt=6;
+    while(cnt)
+        cnt--;
 }
+//void send0(uint32_t gpio_periph, uint32_t pin)
+//{
+//    GPIO_BOP(GPIOC)=(uint32_t)GPIO_PIN_10;
+//    ugly_325ns_delay();
+//    GPIO_BC(GPIOC)=(uint32_t)GPIO_PIN_10;
+//    ugly_860ns_delay();
+//}
+//void send1(uint32_t gpio_periph, uint32_t pin)
+//{
+//    GPIO_BOP(GPIOC)=(uint32_t)GPIO_PIN_10;
+//    ugly_860ns_delay();
+//    GPIO_BC(GPIOC)=(uint32_t)GPIO_PIN_10;
+//    ugly_325ns_delay();
+//}
 void reset(uint32_t gpio_periph, uint32_t pin)
 {
     gpio_bit_reset(gpio_periph, pin);
-    int i;
-    for(i=0;i<200;i++)
-        delay_us(60);// 80us
+    delay_us(500);
+//    int i;
+//    for(i=0;i<200;i++)
+//        delay_us(60);// 80us
 }
 
 // 0 255 0  G R B
-void send_red(uint32_t gpio_periph, uint32_t pin)
+void send_green_1(uint32_t gpio_periph, uint32_t pin)
 {
     uint32_t i;
+    delay_us(5);
     for(i=0;i<8;i++)
         send0(gpio_periph,pin);
     for(i=0;i<8;i++)
@@ -38,74 +50,72 @@ void send_red(uint32_t gpio_periph, uint32_t pin)
         send0(gpio_periph,pin);
 }
 // 0 0 255
-void send_blue(uint32_t gpio_periph, uint32_t pin)
+void send_blue_1(uint32_t gpio_periph, uint32_t pin)
 {
     uint32_t i;
+    delay_us(5);
     for(i=0;i<16;i++)
         send0(gpio_periph,pin);
     for(i=0;i<8;i++)
         send1(gpio_periph,pin);
 }
 // 255 0 0
-void send_green(uint32_t gpio_periph, uint32_t pin)
+void send_red_1(uint32_t gpio_periph, uint32_t pin)
 {
     uint32_t i;
+    delay_us(5);
     for(i=0;i<8;i++)
         send1(gpio_periph,pin);
     for(i=0;i<16;i++)
         send0(gpio_periph,pin);
 }
-void send_rgb(uint32_t gpio_periph, uint32_t pin,rgb_t rgb)
+void send_rgb_1(uint32_t gpio_periph, uint32_t pin,uint32_t rgb)
 {
     uint32_t i;
-    for(i=0;i<8;i++){
-        if((rgb.g & 0x80) == 0x80){
+    delay_us(5);
+    for(i=0;i<24;i++){
+        if(rgb & 0x800000){
             send1(gpio_periph,pin);
-        }else
+        }else{
             send0(gpio_periph,pin);
-        rgb.g<<=1;
-    }
-    for(i=0;i<8;i++){
-        if((rgb.r & 0x80) == 0x80){
-            send1(gpio_periph,pin);
-        }else
-            send0(gpio_periph,pin);
-        rgb.r<<=1;
-    }
-    for(i=0;i<8;i++){
-        if((rgb.b & 0x80) == 0x80){
-            send1(gpio_periph,pin);
-        }else
-            send0(gpio_periph,pin);
-        rgb.b<<=1;
+        }
+        rgb<<=1;
     }
 }
-void send_led(uint32_t gpio_periph, uint32_t pin,rgb_t led[],uint32_t len)
+
+void send_led_1(uint32_t gpio_periph, uint32_t pin,uint32_t led[],uint32_t len)
 {
-    uint32_t p;
-    for(p=0;p<len;p++){
-        uint32_t i;
-        rgb_t rgb=led[i];
-        for(i=0;i<8;i++){
-            if((rgb.g & 0x80) == 0x80){
-                send1(gpio_periph,pin);
-            }else
-                send0(gpio_periph,pin);
-            rgb.g<<=1;
-        }
-        for(i=0;i<8;i++){
-            if((rgb.r & 0x80) == 0x80){
-                send1(gpio_periph,pin);
-            }else
-                send0(gpio_periph,pin);
-            rgb.r<<=1;
-        }
-        for(i=0;i<8;i++){
-            if((rgb.b & 0x80) == 0x80){
-                send1(gpio_periph,pin);
-            }else
-                send0(gpio_periph,pin);
-            rgb.b<<=1;
-        }
+    uint32_t i;
+    uint32_t rgb;
+    for(i=0;i<len;i++){
+        rgb=led[i];
+        //printf("%d,",rgb);
+        send_rgb_1(gpio_periph,pin,rgb);
     }
+    reset(gpio_periph,pin);
+}
+
+//默认使用PC10端口
+void send_green()
+{
+    send_green_1(GPIOC,GPIO_PIN_10);
+}
+// 0 0 255
+void send_blue()
+{
+    send_blue_1(GPIOC,GPIO_PIN_10);
+}
+// 255 0 0
+void send_red()
+{
+    send_red_1(GPIOC,GPIO_PIN_10);
+}
+void send_rgb()
+{
+    send_rgb_1(GPIOC,GPIO_PIN_10);
+}
+
+void send_led()
+{
+    send_led_1(GPIOC,GPIO_PIN_10);
 }

@@ -4,9 +4,11 @@ Component: ARM Compiler 5.06 update 7 (build 960) Tool: armlink [4d3601]
 
 Section Cross References
 
+    test.o(i.U1_led_flash) refers to rgb.o(i.ugly_325ns_delay) for ugly_325ns_delay
+    test.o(i.U1_led_flash) refers to rgb.o(i.ugly_860ns_delay) for ugly_860ns_delay
     test.o(i.U1_led_flash) refers to rgb.o(i.reset) for reset
-    test.o(i.U1_led_flash) refers to test.o(i.ugly_816ns_delay) for ugly_816ns_delay
-    test.o(i.U1_led_flash) refers to test.o(i.ugly_416ns_delay) for ugly_416ns_delay
+    test.o(i.U1_led_flash) refers to rgb.o(i.send_rgb) for send_rgb
+    test.o(i.U1_led_flash) refers to platform_systick.o(i.delay_ms) for delay_ms
     test.o(i.U1_led_init) refers to gd32f4xx_rcu.o(i.rcu_periph_clock_enable) for rcu_periph_clock_enable
     test.o(i.U1_led_init) refers to gd32f4xx_gpio.o(i.gpio_mode_set) for gpio_mode_set
     test.o(i.U1_led_init) refers to gd32f4xx_gpio.o(i.gpio_output_options_set) for gpio_output_options_set
@@ -14,9 +16,15 @@ Section Cross References
     test.o(i.main) refers to test.o(i.U1_led_init) for U1_led_init
     test.o(i.main) refers to rgb.o(i.reset) for reset
     test.o(i.main) refers to platform_systick.o(i.get_systick_ms) for get_systick_ms
-    test.o(i.main) refers to printf1.o(i.__0printf$1) for __2printf
+    test.o(i.main) refers to printfa.o(i.__0printf) for __2printf
     test.o(i.main) refers to test.o(i.U1_led_flash) for U1_led_flash
     test.o(i.print_buf_putchar) refers to test.o(.bss) for stdio_print_buf
+    test.o(i.test_delayer) refers to platform_systick.o(i.get_systick_ms) for get_systick_ms
+    test.o(i.test_delayer) refers to rgb.o(i.ugly_860ns_delay) for ugly_860ns_delay
+    test.o(i.test_delayer) refers to dflti.o(.text) for __aeabi_i2d
+    test.o(i.test_delayer) refers to dmul.o(.text) for __aeabi_dmul
+    test.o(i.test_delayer) refers to ddiv.o(.text) for __aeabi_ddiv
+    test.o(i.test_delayer) refers to printfa.o(i.__0printf) for __2printf
     platform_systick.o(i.SysTick_Handler) refers to platform_systick.o(i.systick_handler) for systick_handler
     platform_systick.o(i.delay_100ns) refers to platform_systick.o(i.systick_init) for systick_init
     platform_systick.o(i.delay_100ns) refers to platform_systick.o(i.get_systick_ns) for get_systick_ns
@@ -38,22 +46,20 @@ Section Cross References
     platform_systick.o(i.systick_init) refers to platform_systick.o(.data) for is_init
     rgb.o(i.reset) refers to gd32f4xx_gpio.o(i.gpio_bit_reset) for gpio_bit_reset
     rgb.o(i.reset) refers to platform_systick.o(i.delay_us) for delay_us
-    rgb.o(i.send0) refers to gd32f4xx_gpio.o(i.gpio_bit_set) for gpio_bit_set
-    rgb.o(i.send0) refers to platform_systick.o(i.delay_100ns) for delay_100ns
-    rgb.o(i.send0) refers to gd32f4xx_gpio.o(i.gpio_bit_reset) for gpio_bit_reset
-    rgb.o(i.send1) refers to gd32f4xx_gpio.o(i.gpio_bit_set) for gpio_bit_set
-    rgb.o(i.send1) refers to platform_systick.o(i.delay_100ns) for delay_100ns
-    rgb.o(i.send1) refers to gd32f4xx_gpio.o(i.gpio_bit_reset) for gpio_bit_reset
-    rgb.o(i.send_blue) refers to rgb.o(i.send0) for send0
-    rgb.o(i.send_blue) refers to rgb.o(i.send1) for send1
-    rgb.o(i.send_green) refers to rgb.o(i.send1) for send1
-    rgb.o(i.send_green) refers to rgb.o(i.send0) for send0
-    rgb.o(i.send_led) refers to rgb.o(i.send1) for send1
-    rgb.o(i.send_led) refers to rgb.o(i.send0) for send0
-    rgb.o(i.send_red) refers to rgb.o(i.send0) for send0
-    rgb.o(i.send_red) refers to rgb.o(i.send1) for send1
-    rgb.o(i.send_rgb) refers to rgb.o(i.send1) for send1
-    rgb.o(i.send_rgb) refers to rgb.o(i.send0) for send0
+    rgb.o(i.send_blue) refers to platform_systick.o(i.delay_us) for delay_us
+    rgb.o(i.send_blue) refers to rgb.o(i.ugly_325ns_delay) for ugly_325ns_delay
+    rgb.o(i.send_blue) refers to rgb.o(i.ugly_860ns_delay) for ugly_860ns_delay
+    rgb.o(i.send_green) refers to platform_systick.o(i.delay_us) for delay_us
+    rgb.o(i.send_green) refers to rgb.o(i.ugly_325ns_delay) for ugly_325ns_delay
+    rgb.o(i.send_green) refers to rgb.o(i.ugly_860ns_delay) for ugly_860ns_delay
+    rgb.o(i.send_led) refers to rgb.o(i.send_rgb) for send_rgb
+    rgb.o(i.send_led) refers to rgb.o(i.reset) for reset
+    rgb.o(i.send_red) refers to platform_systick.o(i.delay_us) for delay_us
+    rgb.o(i.send_red) refers to rgb.o(i.ugly_860ns_delay) for ugly_860ns_delay
+    rgb.o(i.send_red) refers to rgb.o(i.ugly_325ns_delay) for ugly_325ns_delay
+    rgb.o(i.send_rgb) refers to platform_systick.o(i.delay_us) for delay_us
+    rgb.o(i.send_rgb) refers to rgb.o(i.ugly_860ns_delay) for ugly_860ns_delay
+    rgb.o(i.send_rgb) refers to rgb.o(i.ugly_325ns_delay) for ugly_325ns_delay
     gd32f4xx_adc.o(i.adc_deinit) refers to gd32f4xx_rcu.o(i.rcu_periph_reset_enable) for rcu_periph_reset_enable
     gd32f4xx_adc.o(i.adc_deinit) refers to gd32f4xx_rcu.o(i.rcu_periph_reset_disable) for rcu_periph_reset_disable
     gd32f4xx_can.o(i.can_debug_freeze_disable) refers to gd32f4xx_dbg.o(i.dbg_periph_disable) for dbg_periph_disable
@@ -431,6 +437,12 @@ Section Cross References
     printfa.o(i._printf_pre_padding) refers (Special) to iusefp.o(.text) for __I$use$fp
     printfa.o(i._snputc) refers (Special) to iusefp.o(.text) for __I$use$fp
     printfa.o(i._sputc) refers (Special) to iusefp.o(.text) for __I$use$fp
+    dmul.o(.text) refers (Special) to iusefp.o(.text) for __I$use$fp
+    dmul.o(.text) refers to depilogue.o(.text) for _double_epilogue
+    ddiv.o(.text) refers (Special) to iusefp.o(.text) for __I$use$fp
+    ddiv.o(.text) refers to depilogue.o(.text) for _double_round
+    dflti.o(.text) refers (Special) to iusefp.o(.text) for __I$use$fp
+    dflti.o(.text) refers to depilogue.o(.text) for _double_epilogue
     entry2.o(.ARM.Collect$$$$00000001) refers to entry2.o(.ARM.Collect$$$$00002712) for __lit__00000000
     entry2.o(.ARM.Collect$$$$00002712) refers to startup_gd32f450_470.o(STACK) for __initial_sp
     entry2.o(__vectab_stack_and_reset_area) refers to startup_gd32f450_470.o(STACK) for __initial_sp
@@ -440,16 +452,14 @@ Section Cross References
     entry9b.o(.ARM.Collect$$$$0000000C) refers to test.o(i.main) for main
     uldiv.o(.text) refers to llushr.o(.text) for __aeabi_llsr
     uldiv.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    depilogue.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    depilogue.o(.text) refers to llushr.o(.text) for __aeabi_llsr
     dadd.o(.text) refers to llshl.o(.text) for __aeabi_llsl
     dadd.o(.text) refers to llsshr.o(.text) for __aeabi_lasr
     dadd.o(.text) refers to depilogue.o(.text) for _double_epilogue
-    dmul.o(.text) refers to depilogue.o(.text) for _double_epilogue
-    ddiv.o(.text) refers to depilogue.o(.text) for _double_round
     dfixul.o(.text) refers to llushr.o(.text) for __aeabi_llsr
     dfixul.o(.text) refers to llshl.o(.text) for __aeabi_llsl
     init.o(.text) refers to entry5.o(.ARM.Collect$$$$00000004) for __main_after_scatterload
-    depilogue.o(.text) refers to llshl.o(.text) for __aeabi_llsl
-    depilogue.o(.text) refers to llushr.o(.text) for __aeabi_llsr
 
 
 ==============================================================================
@@ -458,19 +468,18 @@ Removing Unused input sections from the image.
 
     Removing test.o(.rev16_text), (4 bytes).
     Removing test.o(.revsh_text), (4 bytes).
+    Removing test.o(i.test_delayer), (156 bytes).
     Removing platform_systick.o(.rev16_text), (4 bytes).
     Removing platform_systick.o(.revsh_text), (4 bytes).
     Removing platform_systick.o(i.delay_100ns), (76 bytes).
-    Removing platform_systick.o(i.delay_ms), (76 bytes).
     Removing platform_systick.o(i.get_systick_ns), (72 bytes).
     Removing platform_systick.o(i.systick_deinit), (32 bytes).
-    Removing rgb.o(i.send0), (36 bytes).
-    Removing rgb.o(i.send1), (36 bytes).
-    Removing rgb.o(i.send_blue), (44 bytes).
-    Removing rgb.o(i.send_green), (44 bytes).
-    Removing rgb.o(i.send_led), (200 bytes).
-    Removing rgb.o(i.send_red), (62 bytes).
-    Removing rgb.o(i.send_rgb), (164 bytes).
+    Removing rgb.o(.rev16_text), (4 bytes).
+    Removing rgb.o(.revsh_text), (4 bytes).
+    Removing rgb.o(i.send_blue), (92 bytes).
+    Removing rgb.o(i.send_green), (128 bytes).
+    Removing rgb.o(i.send_led), (48 bytes).
+    Removing rgb.o(i.send_red), (92 bytes).
     Removing gd32f4xx_adc.o(.rev16_text), (4 bytes).
     Removing gd32f4xx_adc.o(.revsh_text), (4 bytes).
     Removing gd32f4xx_adc.o(i.adc_calibration_enable), (42 bytes).
@@ -1383,14 +1392,9 @@ Removing Unused input sections from the image.
     Removing system_gd32f4xx.o(.revsh_text), (4 bytes).
     Removing system_gd32f4xx.o(i.SystemCoreClockUpdate), (272 bytes).
     Removing system_gd32f4xx.o(.data), (4 bytes).
-    Removing dadd.o(.text), (334 bytes).
-    Removing dmul.o(.text), (228 bytes).
-    Removing ddiv.o(.text), (222 bytes).
-    Removing dfixul.o(.text), (48 bytes).
-    Removing cdrcmple.o(.text), (48 bytes).
-    Removing depilogue.o(.text), (186 bytes).
+    Removing dflti.o(.text), (34 bytes).
 
-933 unused section(s) (total 58130 bytes) removed from the image.
+927 unused section(s) (total 56960 bytes) removed from the image.
 
 ==============================================================================
 
@@ -1400,37 +1404,37 @@ Image Symbol Table
 
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
-    ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry12b.o ABSOLUTE
+    ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry12a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry12b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
     ../clib/microlib/printf/stubs.s          0x00000000   Number         0  stubs.o ABSOLUTE
     ../clib/microlib/stdio/streams.c         0x00000000   Number         0  stdout.o ABSOLUTE
     ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
@@ -1438,6 +1442,7 @@ Image Symbol Table
     ../fplib/microlib/fpdiv.c                0x00000000   Number         0  ddiv.o ABSOLUTE
     ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
     ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixul.o ABSOLUTE
+    ../fplib/microlib/fpflt.c                0x00000000   Number         0  dflti.o ABSOLUTE
     ../fplib/microlib/fpmul.c                0x00000000   Number         0  dmul.o ABSOLUTE
     ..\Application\RGB.c                     0x00000000   Number         0  rgb.o ABSOLUTE
     ..\Application\main.c                    0x00000000   Number         0  main.o ABSOLUTE
@@ -1474,6 +1479,7 @@ Image Symbol Table
     ..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Source\gd32f4xx_trng.c 0x00000000   Number         0  gd32f4xx_trng.o ABSOLUTE
     ..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Source\gd32f4xx_usart.c 0x00000000   Number         0  gd32f4xx_usart.o ABSOLUTE
     ..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Source\gd32f4xx_wwdgt.c 0x00000000   Number         0  gd32f4xx_wwdgt.o ABSOLUTE
+    ..\\Application\\RGB.c                   0x00000000   Number         0  rgb.o ABSOLUTE
     ..\\Application\\platform_systick.c      0x00000000   Number         0  platform_systick.o ABSOLUTE
     ..\\Application\\test.c                  0x00000000   Number         0  test.o ABSOLUTE
     ..\\GD32F4xx_Firmware_Library\\CMSIS\\GD\\GD32F4xx\\Source\\system_gd32f4xx.c 0x00000000   Number         0  system_gd32f4xx.o ABSOLUTE
@@ -1524,38 +1530,57 @@ Image Symbol Table
     __lit__00000000                          0x080001c0   Data           4  entry2.o(.ARM.Collect$$$$00002712)
     .text                                    0x080001c4   Section       36  startup_gd32f450_470.o(.text)
     $v0                                      0x080001c4   Number         0  startup_gd32f450_470.o(.text)
-    .text                                    0x080001e8   Section        0  uidiv.o(.text)
-    .text                                    0x08000214   Section       36  init.o(.text)
-    i.SysTick_Handler                        0x08000238   Section        0  platform_systick.o(i.SysTick_Handler)
-    i.SystemInit                             0x08000240   Section        0  system_gd32f4xx.o(i.SystemInit)
-    i.U1_led_flash                           0x08000314   Section        0  test.o(i.U1_led_flash)
-    i.U1_led_init                            0x08000350   Section        0  test.o(i.U1_led_init)
-    i.__0printf$1                            0x080003b8   Section        0  printf1.o(i.__0printf$1)
-    i.__scatterload_copy                     0x080003d8   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x080003e6   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x080003e8   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i._printf_core                           0x080003f8   Section        0  printf1.o(i._printf_core)
-    _printf_core                             0x080003f9   Thumb Code   336  printf1.o(i._printf_core)
-    i.delay_us                               0x0800054c   Section        0  platform_systick.o(i.delay_us)
-    i.fputc                                  0x08000598   Section        0  test.o(i.fputc)
-    i.get_systick_ms                         0x080005ac   Section        0  platform_systick.o(i.get_systick_ms)
-    i.get_systick_us                         0x080005f0   Section        0  platform_systick.o(i.get_systick_us)
-    i.gpio_bit_reset                         0x08000634   Section        0  gd32f4xx_gpio.o(i.gpio_bit_reset)
-    i.gpio_mode_set                          0x08000638   Section        0  gd32f4xx_gpio.o(i.gpio_mode_set)
-    i.gpio_output_options_set                0x08000686   Section        0  gd32f4xx_gpio.o(i.gpio_output_options_set)
-    i.main                                   0x080006c8   Section        0  test.o(i.main)
-    i.print_buf_putchar                      0x08000708   Section        0  test.o(i.print_buf_putchar)
-    i.rcu_periph_clock_enable                0x0800073c   Section        0  gd32f4xx_rcu.o(i.rcu_periph_clock_enable)
-    i.reset                                  0x08000760   Section        0  rgb.o(i.reset)
-    i.system_clock_240m_irc16m               0x08000780   Section        0  system_gd32f4xx.o(i.system_clock_240m_irc16m)
-    system_clock_240m_irc16m                 0x08000781   Thumb Code   238  system_gd32f4xx.o(i.system_clock_240m_irc16m)
-    i.system_clock_config                    0x0800087c   Section        0  system_gd32f4xx.o(i.system_clock_config)
-    system_clock_config                      0x0800087d   Thumb Code     8  system_gd32f4xx.o(i.system_clock_config)
-    i.systick_handler                        0x08000884   Section        0  platform_systick.o(i.systick_handler)
-    i.systick_init                           0x080008c0   Section        0  platform_systick.o(i.systick_init)
-    systick_init                             0x080008c1   Thumb Code    26  platform_systick.o(i.systick_init)
-    i.ugly_416ns_delay                       0x080008e4   Section        0  test.o(i.ugly_416ns_delay)
-    i.ugly_816ns_delay                       0x080008f0   Section        0  test.o(i.ugly_816ns_delay)
+    .text                                    0x080001e8   Section        0  dmul.o(.text)
+    .text                                    0x080002cc   Section        0  ddiv.o(.text)
+    .text                                    0x080003aa   Section        0  uidiv.o(.text)
+    .text                                    0x080003d6   Section        0  uldiv.o(.text)
+    .text                                    0x08000438   Section        0  iusefp.o(.text)
+    .text                                    0x08000438   Section        0  depilogue.o(.text)
+    .text                                    0x080004f2   Section        0  dadd.o(.text)
+    .text                                    0x08000640   Section        0  dfixul.o(.text)
+    .text                                    0x08000670   Section       48  cdrcmple.o(.text)
+    .text                                    0x080006a0   Section       36  init.o(.text)
+    .text                                    0x080006c4   Section        0  llshl.o(.text)
+    .text                                    0x080006e2   Section        0  llushr.o(.text)
+    .text                                    0x08000702   Section        0  llsshr.o(.text)
+    i.SysTick_Handler                        0x08000726   Section        0  platform_systick.o(i.SysTick_Handler)
+    i.SystemInit                             0x08000730   Section        0  system_gd32f4xx.o(i.SystemInit)
+    i.U1_led_flash                           0x08000804   Section        0  test.o(i.U1_led_flash)
+    i.U1_led_init                            0x08000870   Section        0  test.o(i.U1_led_init)
+    i.__0printf                              0x080008d8   Section        0  printfa.o(i.__0printf)
+    i.__scatterload_copy                     0x080008f8   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x08000906   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x08000908   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i._fp_digits                             0x08000918   Section        0  printfa.o(i._fp_digits)
+    _fp_digits                               0x08000919   Thumb Code   366  printfa.o(i._fp_digits)
+    i._printf_core                           0x08000a9c   Section        0  printfa.o(i._printf_core)
+    _printf_core                             0x08000a9d   Thumb Code  1704  printfa.o(i._printf_core)
+    i._printf_post_padding                   0x08001150   Section        0  printfa.o(i._printf_post_padding)
+    _printf_post_padding                     0x08001151   Thumb Code    36  printfa.o(i._printf_post_padding)
+    i._printf_pre_padding                    0x08001174   Section        0  printfa.o(i._printf_pre_padding)
+    _printf_pre_padding                      0x08001175   Thumb Code    46  printfa.o(i._printf_pre_padding)
+    i.delay_ms                               0x080011a4   Section        0  platform_systick.o(i.delay_ms)
+    i.delay_us                               0x080011f0   Section        0  platform_systick.o(i.delay_us)
+    i.fputc                                  0x0800123c   Section        0  test.o(i.fputc)
+    i.get_systick_ms                         0x08001250   Section        0  platform_systick.o(i.get_systick_ms)
+    i.get_systick_us                         0x08001294   Section        0  platform_systick.o(i.get_systick_us)
+    i.gpio_bit_reset                         0x080012d8   Section        0  gd32f4xx_gpio.o(i.gpio_bit_reset)
+    i.gpio_mode_set                          0x080012dc   Section        0  gd32f4xx_gpio.o(i.gpio_mode_set)
+    i.gpio_output_options_set                0x0800132a   Section        0  gd32f4xx_gpio.o(i.gpio_output_options_set)
+    i.main                                   0x0800136c   Section        0  test.o(i.main)
+    i.print_buf_putchar                      0x080013ac   Section        0  test.o(i.print_buf_putchar)
+    i.rcu_periph_clock_enable                0x080013e0   Section        0  gd32f4xx_rcu.o(i.rcu_periph_clock_enable)
+    i.reset                                  0x08001404   Section        0  rgb.o(i.reset)
+    i.send_rgb                               0x0800141c   Section        0  rgb.o(i.send_rgb)
+    i.system_clock_240m_irc16m               0x0800147c   Section        0  system_gd32f4xx.o(i.system_clock_240m_irc16m)
+    system_clock_240m_irc16m                 0x0800147d   Thumb Code   238  system_gd32f4xx.o(i.system_clock_240m_irc16m)
+    i.system_clock_config                    0x08001578   Section        0  system_gd32f4xx.o(i.system_clock_config)
+    system_clock_config                      0x08001579   Thumb Code     8  system_gd32f4xx.o(i.system_clock_config)
+    i.systick_handler                        0x08001580   Section        0  platform_systick.o(i.systick_handler)
+    i.systick_init                           0x080015bc   Section        0  platform_systick.o(i.systick_init)
+    systick_init                             0x080015bd   Thumb Code    26  platform_systick.o(i.systick_init)
+    i.ugly_325ns_delay                       0x080015e0   Section        0  rgb.o(i.ugly_325ns_delay)
+    i.ugly_860ns_delay                       0x080015ec   Section        0  rgb.o(i.ugly_860ns_delay)
     .data                                    0x20000000   Section       13  platform_systick.o(.data)
     systick_ns                               0x20000000   Data           4  platform_systick.o(.data)
     systick_ms                               0x20000004   Data           4  platform_systick.o(.data)
@@ -1729,36 +1754,57 @@ Image Symbol Table
     USBHS_IRQHandler                         0x080001df   Thumb Code     0  startup_gd32f450_470.o(.text)
     USBHS_WKUP_IRQHandler                    0x080001df   Thumb Code     0  startup_gd32f450_470.o(.text)
     WWDGT_IRQHandler                         0x080001df   Thumb Code     0  startup_gd32f450_470.o(.text)
-    __aeabi_uidiv                            0x080001e9   Thumb Code     0  uidiv.o(.text)
-    __aeabi_uidivmod                         0x080001e9   Thumb Code    44  uidiv.o(.text)
-    __scatterload                            0x08000215   Thumb Code    28  init.o(.text)
-    __scatterload_rt2                        0x08000215   Thumb Code     0  init.o(.text)
-    SysTick_Handler                          0x08000239   Thumb Code     8  platform_systick.o(i.SysTick_Handler)
-    SystemInit                               0x08000241   Thumb Code   194  system_gd32f4xx.o(i.SystemInit)
-    U1_led_flash                             0x08000315   Thumb Code    54  test.o(i.U1_led_flash)
-    U1_led_init                              0x08000351   Thumb Code    94  test.o(i.U1_led_init)
-    __0printf$1                              0x080003b9   Thumb Code    22  printf1.o(i.__0printf$1)
-    __1printf$1                              0x080003b9   Thumb Code     0  printf1.o(i.__0printf$1)
-    __2printf                                0x080003b9   Thumb Code     0  printf1.o(i.__0printf$1)
-    __scatterload_copy                       0x080003d9   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x080003e7   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x080003e9   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    delay_us                                 0x0800054d   Thumb Code    72  platform_systick.o(i.delay_us)
-    fputc                                    0x08000599   Thumb Code    18  test.o(i.fputc)
-    get_systick_ms                           0x080005ad   Thumb Code    54  platform_systick.o(i.get_systick_ms)
-    get_systick_us                           0x080005f1   Thumb Code    56  platform_systick.o(i.get_systick_us)
-    gpio_bit_reset                           0x08000635   Thumb Code     4  gd32f4xx_gpio.o(i.gpio_bit_reset)
-    gpio_mode_set                            0x08000639   Thumb Code    78  gd32f4xx_gpio.o(i.gpio_mode_set)
-    gpio_output_options_set                  0x08000687   Thumb Code    66  gd32f4xx_gpio.o(i.gpio_output_options_set)
-    main                                     0x080006c9   Thumb Code    44  test.o(i.main)
-    print_buf_putchar                        0x08000709   Thumb Code    46  test.o(i.print_buf_putchar)
-    rcu_periph_clock_enable                  0x0800073d   Thumb Code    32  gd32f4xx_rcu.o(i.rcu_periph_clock_enable)
-    reset                                    0x08000761   Thumb Code    32  rgb.o(i.reset)
-    systick_handler                          0x08000885   Thumb Code    38  platform_systick.o(i.systick_handler)
-    ugly_416ns_delay                         0x080008e5   Thumb Code    12  test.o(i.ugly_416ns_delay)
-    ugly_816ns_delay                         0x080008f1   Thumb Code    12  test.o(i.ugly_816ns_delay)
-    Region$$Table$$Base                      0x080008fc   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x0800091c   Number         0  anon$$obj.o(Region$$Table)
+    __aeabi_dmul                             0x080001e9   Thumb Code   228  dmul.o(.text)
+    __aeabi_ddiv                             0x080002cd   Thumb Code   222  ddiv.o(.text)
+    __aeabi_uidiv                            0x080003ab   Thumb Code     0  uidiv.o(.text)
+    __aeabi_uidivmod                         0x080003ab   Thumb Code    44  uidiv.o(.text)
+    __aeabi_uldivmod                         0x080003d7   Thumb Code    98  uldiv.o(.text)
+    __I$use$fp                               0x08000439   Thumb Code     0  iusefp.o(.text)
+    _double_round                            0x08000439   Thumb Code    30  depilogue.o(.text)
+    _double_epilogue                         0x08000457   Thumb Code   156  depilogue.o(.text)
+    __aeabi_dadd                             0x080004f3   Thumb Code   322  dadd.o(.text)
+    __aeabi_dsub                             0x08000635   Thumb Code     6  dadd.o(.text)
+    __aeabi_drsub                            0x0800063b   Thumb Code     6  dadd.o(.text)
+    __aeabi_d2ulz                            0x08000641   Thumb Code    48  dfixul.o(.text)
+    __aeabi_cdrcmple                         0x08000671   Thumb Code    48  cdrcmple.o(.text)
+    __scatterload                            0x080006a1   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x080006a1   Thumb Code     0  init.o(.text)
+    __aeabi_llsl                             0x080006c5   Thumb Code    30  llshl.o(.text)
+    _ll_shift_l                              0x080006c5   Thumb Code     0  llshl.o(.text)
+    __aeabi_llsr                             0x080006e3   Thumb Code    32  llushr.o(.text)
+    _ll_ushift_r                             0x080006e3   Thumb Code     0  llushr.o(.text)
+    __aeabi_lasr                             0x08000703   Thumb Code    36  llsshr.o(.text)
+    _ll_sshift_r                             0x08000703   Thumb Code     0  llsshr.o(.text)
+    SysTick_Handler                          0x08000727   Thumb Code     8  platform_systick.o(i.SysTick_Handler)
+    SystemInit                               0x08000731   Thumb Code   194  system_gd32f4xx.o(i.SystemInit)
+    U1_led_flash                             0x08000805   Thumb Code   102  test.o(i.U1_led_flash)
+    U1_led_init                              0x08000871   Thumb Code    94  test.o(i.U1_led_init)
+    __0printf                                0x080008d9   Thumb Code    22  printfa.o(i.__0printf)
+    __1printf                                0x080008d9   Thumb Code     0  printfa.o(i.__0printf)
+    __2printf                                0x080008d9   Thumb Code     0  printfa.o(i.__0printf)
+    __c89printf                              0x080008d9   Thumb Code     0  printfa.o(i.__0printf)
+    printf                                   0x080008d9   Thumb Code     0  printfa.o(i.__0printf)
+    __scatterload_copy                       0x080008f9   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x08000907   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x08000909   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    delay_ms                                 0x080011a5   Thumb Code    72  platform_systick.o(i.delay_ms)
+    delay_us                                 0x080011f1   Thumb Code    72  platform_systick.o(i.delay_us)
+    fputc                                    0x0800123d   Thumb Code    18  test.o(i.fputc)
+    get_systick_ms                           0x08001251   Thumb Code    54  platform_systick.o(i.get_systick_ms)
+    get_systick_us                           0x08001295   Thumb Code    56  platform_systick.o(i.get_systick_us)
+    gpio_bit_reset                           0x080012d9   Thumb Code     4  gd32f4xx_gpio.o(i.gpio_bit_reset)
+    gpio_mode_set                            0x080012dd   Thumb Code    78  gd32f4xx_gpio.o(i.gpio_mode_set)
+    gpio_output_options_set                  0x0800132b   Thumb Code    66  gd32f4xx_gpio.o(i.gpio_output_options_set)
+    main                                     0x0800136d   Thumb Code    44  test.o(i.main)
+    print_buf_putchar                        0x080013ad   Thumb Code    46  test.o(i.print_buf_putchar)
+    rcu_periph_clock_enable                  0x080013e1   Thumb Code    32  gd32f4xx_rcu.o(i.rcu_periph_clock_enable)
+    reset                                    0x08001405   Thumb Code    24  rgb.o(i.reset)
+    send_rgb                                 0x0800141d   Thumb Code    92  rgb.o(i.send_rgb)
+    systick_handler                          0x08001581   Thumb Code    38  platform_systick.o(i.systick_handler)
+    ugly_325ns_delay                         0x080015e1   Thumb Code    12  rgb.o(i.ugly_325ns_delay)
+    ugly_860ns_delay                         0x080015ed   Thumb Code    12  rgb.o(i.ugly_860ns_delay)
+    Region$$Table$$Base                      0x080015f8   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08001618   Number         0  anon$$obj.o(Region$$Table)
     __stdout                                 0x20000010   Data           4  stdout.o(.data)
     stdio_print_buf                          0x20000014   Data        4100  test.o(.bss)
     __initial_sp                             0x20001418   Data           0  startup_gd32f450_470.o(STACK)
@@ -1771,66 +1817,84 @@ Memory Map of the image
 
   Image Entry point : 0x080001ad
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00000930, Max: 0x00300000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0000162c, Max: 0x00300000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x0000091c, Max: 0x00300000, ABSOLUTE)
-
-    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x08000000   0x08000000   0x000001ac   Data   RO         5830    RESET               startup_gd32f450_470.o
-    0x080001ac   0x080001ac   0x00000000   Code   RO         5877  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x080001ac   0x080001ac   0x00000004   Code   RO         6141    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x080001b0   0x080001b0   0x00000004   Code   RO         6144    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x080001b4   0x080001b4   0x00000000   Code   RO         6146    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x080001b4   0x080001b4   0x00000000   Code   RO         6148    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x080001b4   0x080001b4   0x00000008   Code   RO         6149    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x080001bc   0x080001bc   0x00000004   Code   RO         6156    .ARM.Collect$$$$0000000E  mc_w.l(entry12b.o)
-    0x080001c0   0x080001c0   0x00000000   Code   RO         6151    .ARM.Collect$$$$0000000F  mc_w.l(entry10a.o)
-    0x080001c0   0x080001c0   0x00000000   Code   RO         6153    .ARM.Collect$$$$00000011  mc_w.l(entry11a.o)
-    0x080001c0   0x080001c0   0x00000004   Code   RO         6142    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
-    0x080001c4   0x080001c4   0x00000024   Code   RO         5831    .text               startup_gd32f450_470.o
-    0x080001e8   0x080001e8   0x0000002c   Code   RO         6158    .text               mc_w.l(uidiv.o)
-    0x08000214   0x08000214   0x00000024   Code   RO         6173    .text               mc_w.l(init.o)
-    0x08000238   0x08000238   0x00000008   Code   RO          194    i.SysTick_Handler   platform_systick.o
-    0x08000240   0x08000240   0x000000d4   Code   RO         5838    i.SystemInit        system_gd32f4xx.o
-    0x08000314   0x08000314   0x0000003c   Code   RO            8    i.U1_led_flash      test.o
-    0x08000350   0x08000350   0x00000068   Code   RO            9    i.U1_led_init       test.o
-    0x080003b8   0x080003b8   0x00000020   Code   RO         5925    i.__0printf$1       mc_w.l(printf1.o)
-    0x080003d8   0x080003d8   0x0000000e   Code   RO         6185    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x080003e6   0x080003e6   0x00000002   Code   RO         6186    i.__scatterload_null  mc_w.l(handlers.o)
-    0x080003e8   0x080003e8   0x0000000e   Code   RO         6187    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x080003f6   0x080003f6   0x00000002   PAD
-    0x080003f8   0x080003f8   0x00000154   Code   RO         5932    i._printf_core      mc_w.l(printf1.o)
-    0x0800054c   0x0800054c   0x0000004c   Code   RO          197    i.delay_us          platform_systick.o
-    0x08000598   0x08000598   0x00000012   Code   RO           10    i.fputc             test.o
-    0x080005aa   0x080005aa   0x00000002   PAD
-    0x080005ac   0x080005ac   0x00000044   Code   RO          198    i.get_systick_ms    platform_systick.o
-    0x080005f0   0x080005f0   0x00000044   Code   RO          200    i.get_systick_us    platform_systick.o
-    0x08000634   0x08000634   0x00000004   Code   RO         2810    i.gpio_bit_reset    gd32f4xx_gpio.o
-    0x08000638   0x08000638   0x0000004e   Code   RO         2817    i.gpio_mode_set     gd32f4xx_gpio.o
-    0x08000686   0x08000686   0x00000042   Code   RO         2819    i.gpio_output_options_set  gd32f4xx_gpio.o
-    0x080006c8   0x080006c8   0x00000040   Code   RO           11    i.main              test.o
-    0x08000708   0x08000708   0x00000034   Code   RO           12    i.print_buf_putchar  test.o
-    0x0800073c   0x0800073c   0x00000024   Code   RO         3606    i.rcu_periph_clock_enable  gd32f4xx_rcu.o
-    0x08000760   0x08000760   0x00000020   Code   RO          270    i.reset             rgb.o
-    0x08000780   0x08000780   0x000000fc   Code   RO         5839    i.system_clock_240m_irc16m  system_gd32f4xx.o
-    0x0800087c   0x0800087c   0x00000008   Code   RO         5840    i.system_clock_config  system_gd32f4xx.o
-    0x08000884   0x08000884   0x0000003c   Code   RO          202    i.systick_handler   platform_systick.o
-    0x080008c0   0x080008c0   0x00000024   Code   RO          203    i.systick_init      platform_systick.o
-    0x080008e4   0x080008e4   0x0000000c   Code   RO           13    i.ugly_416ns_delay  test.o
-    0x080008f0   0x080008f0   0x0000000c   Code   RO           14    i.ugly_816ns_delay  test.o
-    0x080008fc   0x080008fc   0x00000020   Data   RO         6183    Region$$Table       anon$$obj.o
-
-
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x0800091c, Size: 0x00001418, Max: 0x00030000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001618, Max: 0x00300000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x0800091c   0x0000000d   Data   RW          204    .data               platform_systick.o
-    0x2000000d   0x08000929   0x00000003   PAD
-    0x20000010   0x0800092c   0x00000004   Data   RW         6157    .data               mc_w.l(stdout.o)
-    0x20000014        -       0x00001004   Zero   RW           15    .bss                test.o
-    0x20001018        -       0x00000400   Zero   RW         5828    STACK               startup_gd32f450_470.o
+    0x08000000   0x08000000   0x000001ac   Data   RO         5832    RESET               startup_gd32f450_470.o
+    0x080001ac   0x080001ac   0x00000000   Code   RO         5879  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x080001ac   0x080001ac   0x00000004   Code   RO         6149    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x080001b0   0x080001b0   0x00000004   Code   RO         6152    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x080001b4   0x080001b4   0x00000000   Code   RO         6154    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x080001b4   0x080001b4   0x00000000   Code   RO         6156    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x080001b4   0x080001b4   0x00000008   Code   RO         6157    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x080001bc   0x080001bc   0x00000004   Code   RO         6164    .ARM.Collect$$$$0000000E  mc_w.l(entry12b.o)
+    0x080001c0   0x080001c0   0x00000000   Code   RO         6159    .ARM.Collect$$$$0000000F  mc_w.l(entry10a.o)
+    0x080001c0   0x080001c0   0x00000000   Code   RO         6161    .ARM.Collect$$$$00000011  mc_w.l(entry11a.o)
+    0x080001c0   0x080001c0   0x00000004   Code   RO         6150    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x080001c4   0x080001c4   0x00000024   Code   RO         5833    .text               startup_gd32f450_470.o
+    0x080001e8   0x080001e8   0x000000e4   Code   RO         6143    .text               mf_w.l(dmul.o)
+    0x080002cc   0x080002cc   0x000000de   Code   RO         6145    .text               mf_w.l(ddiv.o)
+    0x080003aa   0x080003aa   0x0000002c   Code   RO         6166    .text               mc_w.l(uidiv.o)
+    0x080003d6   0x080003d6   0x00000062   Code   RO         6168    .text               mc_w.l(uldiv.o)
+    0x08000438   0x08000438   0x00000000   Code   RO         6170    .text               mc_w.l(iusefp.o)
+    0x08000438   0x08000438   0x000000ba   Code   RO         6171    .text               mf_w.l(depilogue.o)
+    0x080004f2   0x080004f2   0x0000014e   Code   RO         6173    .text               mf_w.l(dadd.o)
+    0x08000640   0x08000640   0x00000030   Code   RO         6175    .text               mf_w.l(dfixul.o)
+    0x08000670   0x08000670   0x00000030   Code   RO         6177    .text               mf_w.l(cdrcmple.o)
+    0x080006a0   0x080006a0   0x00000024   Code   RO         6179    .text               mc_w.l(init.o)
+    0x080006c4   0x080006c4   0x0000001e   Code   RO         6181    .text               mc_w.l(llshl.o)
+    0x080006e2   0x080006e2   0x00000020   Code   RO         6183    .text               mc_w.l(llushr.o)
+    0x08000702   0x08000702   0x00000024   Code   RO         6185    .text               mc_w.l(llsshr.o)
+    0x08000726   0x08000726   0x00000008   Code   RO          188    i.SysTick_Handler   platform_systick.o
+    0x0800072e   0x0800072e   0x00000002   PAD
+    0x08000730   0x08000730   0x000000d4   Code   RO         5840    i.SystemInit        system_gd32f4xx.o
+    0x08000804   0x08000804   0x0000006c   Code   RO            8    i.U1_led_flash      test.o
+    0x08000870   0x08000870   0x00000068   Code   RO            9    i.U1_led_init       test.o
+    0x080008d8   0x080008d8   0x00000020   Code   RO         6115    i.__0printf         mc_w.l(printfa.o)
+    0x080008f8   0x080008f8   0x0000000e   Code   RO         6189    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x08000906   0x08000906   0x00000002   Code   RO         6190    i.__scatterload_null  mc_w.l(handlers.o)
+    0x08000908   0x08000908   0x0000000e   Code   RO         6191    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x08000916   0x08000916   0x00000002   PAD
+    0x08000918   0x08000918   0x00000184   Code   RO         6122    i._fp_digits        mc_w.l(printfa.o)
+    0x08000a9c   0x08000a9c   0x000006b4   Code   RO         6123    i._printf_core      mc_w.l(printfa.o)
+    0x08001150   0x08001150   0x00000024   Code   RO         6124    i._printf_post_padding  mc_w.l(printfa.o)
+    0x08001174   0x08001174   0x0000002e   Code   RO         6125    i._printf_pre_padding  mc_w.l(printfa.o)
+    0x080011a2   0x080011a2   0x00000002   PAD
+    0x080011a4   0x080011a4   0x0000004c   Code   RO          190    i.delay_ms          platform_systick.o
+    0x080011f0   0x080011f0   0x0000004c   Code   RO          191    i.delay_us          platform_systick.o
+    0x0800123c   0x0800123c   0x00000012   Code   RO           10    i.fputc             test.o
+    0x0800124e   0x0800124e   0x00000002   PAD
+    0x08001250   0x08001250   0x00000044   Code   RO          192    i.get_systick_ms    platform_systick.o
+    0x08001294   0x08001294   0x00000044   Code   RO          194    i.get_systick_us    platform_systick.o
+    0x080012d8   0x080012d8   0x00000004   Code   RO         2812    i.gpio_bit_reset    gd32f4xx_gpio.o
+    0x080012dc   0x080012dc   0x0000004e   Code   RO         2819    i.gpio_mode_set     gd32f4xx_gpio.o
+    0x0800132a   0x0800132a   0x00000042   Code   RO         2821    i.gpio_output_options_set  gd32f4xx_gpio.o
+    0x0800136c   0x0800136c   0x00000040   Code   RO           11    i.main              test.o
+    0x080013ac   0x080013ac   0x00000034   Code   RO           12    i.print_buf_putchar  test.o
+    0x080013e0   0x080013e0   0x00000024   Code   RO         3608    i.rcu_periph_clock_enable  gd32f4xx_rcu.o
+    0x08001404   0x08001404   0x00000018   Code   RO          266    i.reset             rgb.o
+    0x0800141c   0x0800141c   0x00000060   Code   RO          271    i.send_rgb          rgb.o
+    0x0800147c   0x0800147c   0x000000fc   Code   RO         5841    i.system_clock_240m_irc16m  system_gd32f4xx.o
+    0x08001578   0x08001578   0x00000008   Code   RO         5842    i.system_clock_config  system_gd32f4xx.o
+    0x08001580   0x08001580   0x0000003c   Code   RO          196    i.systick_handler   platform_systick.o
+    0x080015bc   0x080015bc   0x00000024   Code   RO          197    i.systick_init      platform_systick.o
+    0x080015e0   0x080015e0   0x0000000c   Code   RO          272    i.ugly_325ns_delay  rgb.o
+    0x080015ec   0x080015ec   0x0000000c   Code   RO          273    i.ugly_860ns_delay  rgb.o
+    0x080015f8   0x080015f8   0x00000020   Data   RO         6187    Region$$Table       anon$$obj.o
+
+
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08001618, Size: 0x00001418, Max: 0x00030000, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000000   0x08001618   0x0000000d   Data   RW          198    .data               platform_systick.o
+    0x2000000d   0x08001625   0x00000003   PAD
+    0x20000010   0x08001628   0x00000004   Data   RW         6165    .data               mc_w.l(stdout.o)
+    0x20000014        -       0x00001004   Zero   RW           14    .bss                test.o
+    0x20001018        -       0x00000400   Zero   RW         5830    STACK               startup_gd32f450_470.o
 
 
 ==============================================================================
@@ -1843,16 +1907,16 @@ Image component sizes
        148          0          0          0          0       2383   gd32f4xx_gpio.o
         36          4          0          0          0        622   gd32f4xx_rcu.o
          0          0          0          0          0       1444   main.o
-       316         62          0         13          0       4061   platform_systick.o
-        32          0          0          0          0        596   rgb.o
+       392         66          0         13          0       4732   platform_systick.o
+       144          4          0          0          0       2229   rgb.o
         36          8        428          0       1024        916   startup_gd32f450_470.o
        472         32          0          0          0       2689   system_gd32f4xx.o
-       322         42          0          0       4100      33056   test.o
+       346         42          0          0       4100      32142   test.o
 
     ----------------------------------------------------------------------
-      1364        148        460         16       5124      45767   Object Totals
+      1578        156        460         16       5124      47157   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         2          0          0          3          0          0   (incl. Padding)
+         4          0          0          3          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1869,22 +1933,34 @@ Image component sizes
          8          4          0          0          0          0   entry9a.o
         30          0          0          0          0          0   handlers.o
         36          8          0          0          0         68   init.o
-       372         14          0          0          0        184   printf1.o
+         0          0          0          0          0          0   iusefp.o
+        30          0          0          0          0         68   llshl.o
+        36          0          0          0          0         68   llsshr.o
+        32          0          0          0          0         68   llushr.o
+      2218         90          0          0          0        464   printfa.o
          0          0          0          4          0          0   stdout.o
         44          0          0          0          0         80   uidiv.o
+        98          0          0          0          0         92   uldiv.o
+        48          0          0          0          0         68   cdrcmple.o
+       334          0          0          0          0        148   dadd.o
+       222          0          0          0          0        100   ddiv.o
+       186          0          0          0          0        176   depilogue.o
+        48          0          0          0          0         68   dfixul.o
+       228          0          0          0          0         96   dmul.o
 
     ----------------------------------------------------------------------
-       508         30          0          4          0        332   Library Totals
-         2          0          0          0          0          0   (incl. Padding)
+      3618        106          0          4          0       1564   Library Totals
+         4          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
 
-       506         30          0          4          0        332   mc_w.l
+      2548        106          0          4          0        908   mc_w.l
+      1066          0          0          0          0        656   mf_w.l
 
     ----------------------------------------------------------------------
-       508         30          0          4          0        332   Library Totals
+      3618        106          0          4          0       1564   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -1893,15 +1969,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      1872        178        460         20       5124      44451   Grand Totals
-      1872        178        460         20       5124      44451   ELF Image Totals
-      1872        178        460         20          0          0   ROM Totals
+      5196        262        460         20       5124      46145   Grand Totals
+      5196        262        460         20       5124      46145   ELF Image Totals
+      5196        262        460         20          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 2332 (   2.28kB)
+    Total RO  Size (Code + RO Data)                 5656 (   5.52kB)
     Total RW  Size (RW Data + ZI Data)              5144 (   5.02kB)
-    Total ROM Size (Code + RO Data + RW Data)       2352 (   2.30kB)
+    Total ROM Size (Code + RO Data + RW Data)       5676 (   5.54kB)
 
 ==============================================================================
 

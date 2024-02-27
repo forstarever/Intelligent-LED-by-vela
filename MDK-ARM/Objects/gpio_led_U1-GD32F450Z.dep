@@ -1,7 +1,7 @@
 Dependencies for Project 'gpio_led', Target 'U1-GD32F450Z': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
-F (..\Application\main.c)(0x65A761F4)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\GD32F4xx_Firmware_Library\CMSIS -I ..\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Include -I ..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include -I ..\Application-ID:\star\software\keilv5\pack\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include-D__UVISION_VERSION="536" -DGD32F450 -DUSE_STDPERIPH_DRIVER -DGD32F450-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-F (..\Application\test.c)(0x65A7852A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\GD32F4xx_Firmware_Library\CMSIS -I ..\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Include -I ..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include -I ..\Application-ID:\star\software\keilv5\pack\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include-D__UVISION_VERSION="536" -DGD32F450 -DUSE_STDPERIPH_DRIVER -DGD32F450-o .\objects\test.o --omf_browse .\objects\test.crf --depend .\objects\test.d)
+F (..\Application\main.c)(0x65A7B8F6)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\GD32F4xx_Firmware_Library\CMSIS -I ..\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Include -I ..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include -I ..\Application-ID:\star\software\keilv5\pack\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include-D__UVISION_VERSION="536" -DGD32F450 -DUSE_STDPERIPH_DRIVER -DGD32F450-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (..\Application\test.c)(0x65A7B426)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\GD32F4xx_Firmware_Library\CMSIS -I ..\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Include -I ..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include -I ..\Application-ID:\star\software\keilv5\pack\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include-D__UVISION_VERSION="536" -DGD32F450 -DUSE_STDPERIPH_DRIVER -DGD32F450-o .\objects\test.o --omf_browse .\objects\test.crf --depend .\objects\test.d)
 I (D:\star\software\keilv5\core\ARM\ARMCC\include\stdio.h)(0x60252374)
 I (..\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Include\gd32f4xx.h)(0x6406F2A5)
 I (..\GD32F4xx_Firmware_Library\CMSIS\core_cm4.h)(0x6406F2A5)
@@ -42,7 +42,7 @@ I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_ex
 I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_ipa.h)(0x6406F2A4)
 I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_tli.h)(0x6406F2A4)
 I (..\Application\platform_systick.h)(0x65A76381)
-I (..\Application\RGB.h)(0x65A76236)
+I (..\Application\RGB.h)(0x65A7AF0A)
 F (..\Application\platform_systick.c)(0x65A7623C)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\GD32F4xx_Firmware_Library\CMSIS -I ..\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Include -I ..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include -I ..\Application-ID:\star\software\keilv5\pack\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include-D__UVISION_VERSION="536" -DGD32F450 -DUSE_STDPERIPH_DRIVER -DGD32F450-o .\objects\platform_systick.o --omf_browse .\objects\platform_systick.crf --depend .\objects\platform_systick.d)
 I (..\Application\platform_systick.h)(0x65A76381)
 I (D:\star\software\keilv5\core\ARM\ARMCC\include\stdint.h)(0x6025237E)
@@ -83,9 +83,47 @@ I (D:\star\software\keilv5\core\ARM\ARMCC\include\stdlib.h)(0x60252374)
 I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_exmc.h)(0x6406F2A4)
 I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_ipa.h)(0x6406F2A4)
 I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_tli.h)(0x6406F2A4)
-F (..\Application\RGB.c)(0x65A761EE)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\GD32F4xx_Firmware_Library\CMSIS -I ..\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Include -I ..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include -I ..\Application-ID:\star\software\keilv5\pack\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include-D__UVISION_VERSION="536" -DGD32F450 -DUSE_STDPERIPH_DRIVER -DGD32F450-o .\objects\rgb.o --omf_browse .\objects\rgb.crf --depend .\objects\rgb.d)
-I (..\Application\RGB.h)(0x65A76236)
+F (..\Application\RGB.c)(0x65A7B4D4)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\GD32F4xx_Firmware_Library\CMSIS -I ..\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Include -I ..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include -I ..\Application-ID:\star\software\keilv5\pack\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include-D__UVISION_VERSION="536" -DGD32F450 -DUSE_STDPERIPH_DRIVER -DGD32F450-o .\objects\rgb.o --omf_browse .\objects\rgb.crf --depend .\objects\rgb.d)
+I (..\Application\RGB.h)(0x65A7AF0A)
 I (D:\star\software\keilv5\core\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (..\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Include\gd32f4xx.h)(0x6406F2A5)
+I (..\GD32F4xx_Firmware_Library\CMSIS\core_cm4.h)(0x6406F2A5)
+I (..\GD32F4xx_Firmware_Library\CMSIS\core_cmInstr.h)(0x6406F2A5)
+I (..\GD32F4xx_Firmware_Library\CMSIS\core_cmFunc.h)(0x6406F2A5)
+I (..\GD32F4xx_Firmware_Library\CMSIS\core_cm4_simd.h)(0x6406F2A5)
+I (..\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Include\system_gd32f4xx.h)(0x6406F2A5)
+I (..\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Include\gd32f4xx_libopt.h)(0x6406F2B8)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_rcu.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_adc.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_can.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_crc.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_ctc.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_dac.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_dbg.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_dci.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_dma.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_exti.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_fmc.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_fwdgt.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_gpio.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_syscfg.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_i2c.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_iref.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_pmu.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_rtc.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_sdio.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_spi.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_timer.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_trng.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_usart.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_wwdgt.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_misc.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_enet.h)(0x6406F2A4)
+I (D:\star\software\keilv5\core\ARM\ARMCC\include\stdlib.h)(0x60252374)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_exmc.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_ipa.h)(0x6406F2A4)
+I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_tli.h)(0x6406F2A4)
+I (..\Application\platform_systick.h)(0x65A76381)
 F (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Source\gd32f4xx_adc.c)(0x6406F2A4)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\GD32F4xx_Firmware_Library\CMSIS -I ..\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Include -I ..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include -I ..\Application-ID:\star\software\keilv5\pack\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include-D__UVISION_VERSION="536" -DGD32F450 -DUSE_STDPERIPH_DRIVER -DGD32F450-o .\objects\gd32f4xx_adc.o --omf_browse .\objects\gd32f4xx_adc.crf --depend .\objects\gd32f4xx_adc.d)
 I (..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_adc.h)(0x6406F2A4)
 I (..\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Include\gd32f4xx.h)(0x6406F2A5)

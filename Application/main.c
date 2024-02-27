@@ -1,6 +1,20 @@
-//#include <stdio.h>
-//#include "gd32f4xx.h"
-////-----------debug----------//
+/*************************************************************************************************************
+功能:     上电初始化后开始录音,完成后开始播放，循环往复(录音时间约10s)
+版本:     2023-5-16 V1.0
+修改记录: 无
+作者:     ZZZ
+编码格式：GB2312
+*************************************************************************************************************/
+
+#include "gd32f4xx.h"
+#include "main.h"
+#include "i2c.h"
+#include "stdio.h"
+#include "string.h"
+#include "e4.h"
+#include "led.h"
+
+////-----------debug----------// need-for-printf
 //typedef struct print_buffer
 //{
 //    char buf[4096];
@@ -28,208 +42,260 @@
 //    // while (RESET == usart_flag_get(EVAL_COM0, USART_FLAG_TBE));
 //    // return ch;
 //}
-////-----------SysTick Delay----------//
-//uint32_t volatile msTicks; // Counter for millisecond Interval
-//void SysTick_Handler(void)
-//{ // SysTick Interrupt Handler
-//    msTicks++; // Increment Counter
-//}
-//int get_ticks()
-//{
-//    return msTicks;
-//}
-//void delay_1tick(void)
-//{
-//    uint32_t curTicks;
-//    curTicks = msTicks; // Save Current SysTick Value
-//    while (msTicks == curTicks)
-//    { // Wait for next SysTick Interrupt
-//        __WFE(); // Power-Down until next Event/Interrupt
-//    }
-//}
-//void delay_ms(int ms)
-//{
-//    int i;
-//    for (i = 0; i < ms; i++)
-//    {
-//        delay_1tick();
-//    }
-//}
-//void systick_config(void)
-//{
-//    /* setup systick timer for 1000Hz interrupts */
-//    if (SysTick_Config(SystemCoreClock / 1000U))
-//    {
-//        /* capture error */
-//        while (1)
-//        {
-//        }
-//    }
-//    /* configure the systick handler priority */
-//    NVIC_SetPriority(SysTick_IRQn, 0x00U);
-//}
-////-----------GPIO LED----------//
-//void U1_led_init()
-//{
-//    /* enable the LEDs GPIO clock */
-//    rcu_periph_clock_enable(RCU_GPIOF);
-//    gpio_mode_set(GPIOF, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_PIN_4);
-//    //gpio_output_options_set(GPIOF, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ,
-//    //GPIO_PIN_4);
-//    //gpio_bit_reset(GPIOF, GPIO_PIN_4);
-//}
-//void U1_led_flash(int ms)
-//{
-//    //gpio_bit_toggle(GPIOF, GPIO_PIN_4);
-//    gpio_bit_set(GPIOF, GPIO_PIN_4);
-//    delay_ms(ms);
-//    gpio_bit_reset(GPIOF, GPIO_PIN_4);
-//    delay_ms(ms);
-//}
-////-----------main----------//
-//int main()
-//{
-//    systick_config();
-//    U1_led_init();
-//    while (1)
-//    {
-//        printf("time=%d\n", get_ticks());
-//        U1_led_flash(1000);
-//    }
-//}
+
+uint16_t  delay_count = 0;                 //延时变量
+uint16_t  time_count = 0;                  //1s定时变量
+
+unsigned short playdata[PLAYCNT];		   //语音数据缓存
+
+unsigned long playcnt = 0;				   //音频文件索引
+unsigned char playflag = 0;				   //放音标志
+
+uint8_t  start_flag = 0;	//录音标志
+uint8_t  record_flag = 0;	//录音完成标志
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#include <math.h>
+
+#define MAX_PCM_VALUE 32768.0
+#define REFERENCE_PRESSURE 0.00002
+
+double calculateDB() {
+    double sum = 0.0;
+    for(size_t i = 0; i < playcnt; ++i) if((double)playdata[i] < MAX_PCM_VALUE) {
+            double normalizedSample = playdata[i] / MAX_PCM_VALUE;
+            sum += normalizedSample * normalizedSample;
+        }
+    double rms =  sqrt(sum / playcnt);
+    return 20.0 * log10(rms / REFERENCE_PRESSURE);
+}
+
+void print_dB(void) {
+    double decibels = calculateDB();
+    printf("%lf dB\n", decibels);
+
+    //for(size_t i = 0; i < playcnt; ++i) if((double)playdata[i] < MAX_PCM_VALUE)
+    //	printf("%d ", (int)playdata[i]);
+
+    if (decibels >= 55 && decibels < 64) {
+        send_red();
+    }
+    else if (decibels >= 64 && decibels < 67) {
+        send_blue();
+    }
+    else if (decibels >= 67 && decibels < 75) {
+        send_green();
+    }
+}
+
+int main(void)
+{
+    printf("Hello World!\n\n");
+    nvic_priority_group_set(NVIC_PRIGROUP_PRE4_SUB0);
+
+    dis_led_init();
+    e4_init();
+
+    while(1)
+    {
+        if(start_flag == 0)
+        {
+            start_flag = 1;
+            record_flag = 0;
+            playcnt = 0;
+            e4_sound_recording_config();
+            nvic_irq_enable(SPI2_IRQn,0,0);                //打开中断,可以录音
+            LED_OFF;
+        }
+        else
+        {
+            if(record_flag)
+            {
+                record_flag = 0;
+                e4_playback_config();
+                playflag = 1;
+                LED_ON;
+            }
+        }
+    }
+}
 
 
 
-//
-//#include <stdio.h>
-//#include "gd32f4xx.h"
-//#include "delay.h"
-//
-////-----------debug----------//
-//typedef struct print_buffer {
-//    char buf[4096];
-//    int idx;
-//} print_buffer;
-//print_buffer stdio_print_buf;
-//
-//void print_buf_putchar(struct print_buffer *buffer, char ch) {
-//    if (buffer == NULL) {
-//        buffer = &stdio_print_buf;
-//    }
-//    if (buffer->idx >= sizeof(buffer->buf)) {
-//        buffer->idx = 0;
-//    }
-//    buffer->buf[buffer->idx++] = ch;
-//}
-//
-//int fputc(int ch, FILE *f) {
-//    print_buf_putchar(NULL, ch);
-//    return ch;
-//    /* USART2 for printf */
-//    // usart_data_transmit(EVAL_COM0, (uint8_t) ch);
-//    // while (RESET == usart_flag_get(EVAL_COM0, USART_FLAG_TBE));
-//    // return ch;
-//}
-//
-//////-----------SysTick Delay----------//
-////uint32_t volatile msTicks; // Counter for millisecond Interval
-////void SysTick_Handler(void) { // SysTick Interrupt Handler
-////    msTicks++; // Increment Counter
-////}
-////
-////int get_ticks() {
-////    return msTicks;
-////}
-////
-////void delay_1tick(void) {
-////    uint32_t curTicks;
-////    curTicks = msTicks; // Save Current SysTick Value
-////    while (msTicks == curTicks) { // Wait for next SysTick Interrupt
-////        __WFE(); // Power-Down until next Event/Interrupt
-////    }
-////}
-////
-////void delay_ms(int ms) {
-////    int i;
-////    for (i = 0; i < ms; i++) {
-////        delay_1tick();
-////    }
-////}
-////
-////void systick_config(void) {
-////    /* setup systick timer for 1000Hz interrupts */
-////	printf("entry...\n");
-////    if (SysTick_Config(SystemCoreClock / 10000000U)) {
-////        /* capture error */
-////        while (1) {
-////            printf("---\n");
-////      }
-////    }
-////	printf("success...\n");
-////    /* configure the systick handler priority */
-////    NVIC_SetPriority(SysTick_IRQn, 0x00U);
-////}
-////
-//////-----------GPIO LED----------//
-////void U1_led_init()
-////{
-////    /* enable the LEDs GPIO clock */
-////    rcu_periph_clock_enable(RCU_GPIOF);
-////    gpio_mode_set(GPIOF, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_PIN_4);
-////    //gpio_output_options_set(GPIOF, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ,
-////    //GPIO_PIN_4);
-////    //gpio_bit_reset(GPIOF, GPIO_PIN_4);
-////}
-////void U1_led_flash(int ms)
-////{
-////    //gpio_bit_toggle(GPIOF, GPIO_PIN_4);
-////    gpio_bit_set(GPIOF, GPIO_PIN_4);
-////    delay_ms(ms);
-////    gpio_bit_reset(GPIOF, GPIO_PIN_4);
-////    delay_ms(ms);
-////}
-//
-//
-//void U1_led_init() {
-//    /* enable the LEDs GPIO clock */
-//    rcu_periph_clock_enable(RCU_GPIOF);
-//    rcu_periph_clock_enable(RCU_GPIOC);
-//
-//    gpio_mode_set(GPIOC, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_PIN_10);
-//    gpio_mode_set(GPIOF, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_PIN_4);
-//
-//    gpio_output_options_set(GPIOF, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_4);
-//    gpio_output_options_set(GPIOC, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_10);
-//
-//
-//    //gpio_output_options_set(GPIOF, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ,
-//    //GPIO_PIN_4);
-//    //gpio_bit_reset(GPIOF, GPIO_PIN_4);
-//}
-//
-//void U1_led_flash(int us) {
-//    //gpio_bit_toggle(GPIOF, GPIO_PIN_4);
-//    gpio_bit_set(GPIOC, GPIO_PIN_10);
-//    gpio_bit_set(GPIOF, GPIO_PIN_4);
-//	printf("---");
-//    delay_us(us);
-//	  printf("!!!");
-//    gpio_bit_reset(GPIOC, GPIO_PIN_10);
-//    gpio_bit_reset(GPIOF, GPIO_PIN_4);
-//		printf("---");
-//    delay_us(us);
-//		  printf("!!!");
-//
-//}
-//
-//
-////-----------main----------//
-//int main() {
-//    Delay_Init();
-//    U1_led_init();
-//    while (1) {
-//        printf("time=%d\n", micros());
-//        U1_led_flash(10);
-//        //test();
-//    }
-//}
+/***********************************************************************************************************
+//timer3 init 1ms定时
+************************************************************************************************************/
+void timer3_init(void)
+{
+    timer_parameter_struct timer_init_struct;
+
+    rcu_periph_clock_enable(RCU_TIMER3);
+
+    timer_deinit(TIMER3);
+    timer_init_struct.prescaler			= 4199;
+    timer_init_struct.period			= 20;
+    timer_init_struct.alignedmode		= TIMER_COUNTER_EDGE;
+    timer_init_struct.counterdirection	= TIMER_COUNTER_UP;
+    timer_init_struct.clockdivision		= TIMER_CKDIV_DIV1;
+    timer_init_struct.repetitioncounter = 0;
+    timer_init(TIMER3, &timer_init_struct);
+
+    nvic_irq_enable(TIMER3_IRQn, 1, 1);
+    timer_interrupt_enable(TIMER3, TIMER_INT_UP);
+    timer_enable(TIMER3);
+}
+
+
+
+/********************************************************************************************************
+//初始化led
+*********************************************************************************************************/
+void  dis_led_init (void)
+{
+    /* enable the led clock */
+    rcu_periph_clock_enable(RCU_GPIOF);
+    /* configure led GPIO port */
+    gpio_mode_set(GPIOF, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE,GPIO_PIN_4);
+    gpio_output_options_set(GPIOF, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ,GPIO_PIN_4);
+
+    GPIO_BC(GPIOF) = GPIO_PIN_4;
+}
+
+
+/********************************************************************************************************
+//初始化串口
+*********************************************************************************************************/
+void uart_init(uint32_t usart_periph)
+{
+    if(usart_periph == USART0)
+    {
+        nvic_irq_enable(USART0_IRQn, 0, 0);
+        rcu_periph_clock_enable(RCU_GPIOB);	/* enable GPIO clock */
+        rcu_periph_clock_enable(RCU_USART0);	/* enable USART clock */
+        gpio_af_set(GPIOB, GPIO_AF_7, GPIO_PIN_6);	/* connect port to USARTx_Tx */
+        gpio_af_set(GPIOB, GPIO_AF_7, GPIO_PIN_7);	/* connect port to USARTx_Rx */
+        gpio_mode_set(GPIOB, GPIO_MODE_AF, GPIO_PUPD_PULLUP,GPIO_PIN_6);	/* configure USART Tx as alternate function push-pull */
+        gpio_output_options_set(GPIOB, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ,GPIO_PIN_6);
+        gpio_mode_set(GPIOB, GPIO_MODE_AF, GPIO_PUPD_PULLUP,GPIO_PIN_7);	/* configure USART Rx as alternate function push-pull */
+        gpio_output_options_set(GPIOB, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ,GPIO_PIN_7);
+        /* USART configure */
+        usart_deinit(USART0);
+        usart_baudrate_set(USART0,115200U);
+        usart_receive_config(USART0, USART_RECEIVE_ENABLE);
+        usart_transmit_config(USART0, USART_TRANSMIT_ENABLE);
+        usart_enable(USART0);
+        usart_interrupt_enable(USART0, USART_INT_RBNE);
+    }
+    else if(usart_periph == USART2)
+    {
+        nvic_irq_enable(USART2_IRQn, 0, 0);
+        rcu_periph_clock_enable(RCU_GPIOC);	/* enable GPIO clock */
+        rcu_periph_clock_enable(RCU_USART2);	/* enable USART clock */
+        gpio_af_set(GPIOC, GPIO_AF_7, GPIO_PIN_10);	/* connect port to USARTx_Tx */
+        gpio_af_set(GPIOC, GPIO_AF_7, GPIO_PIN_11);	/* connect port to USARTx_Rx */
+        gpio_mode_set(GPIOC, GPIO_MODE_AF, GPIO_PUPD_PULLUP,GPIO_PIN_10);	/* configure USART Tx as alternate function push-pull */
+        gpio_output_options_set(GPIOB, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ,GPIO_PIN_10);
+        gpio_mode_set(GPIOC, GPIO_MODE_AF, GPIO_PUPD_PULLUP,GPIO_PIN_11);	/* configure USART Rx as alternate function push-pull */
+        gpio_output_options_set(GPIOC, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ,GPIO_PIN_11);
+        /* USART configure */
+        usart_deinit(USART2);
+        usart_baudrate_set(USART2,115200U);
+        usart_receive_config(USART2, USART_RECEIVE_ENABLE);
+        usart_transmit_config(USART2, USART_TRANSMIT_ENABLE);
+        usart_enable(USART2);
+        usart_interrupt_enable(USART2, USART_INT_RBNE);
+    }
+}
+
+
+
+/********************************************************************************************************
+//串口发送数据
+*********************************************************************************************************/
+uint16_t uart_print(uint32_t usart_periph, uint8_t *data, uint16_t len)
+{
+    uint8_t i;
+    for(i = 0; i < len; i++)
+    {
+        while(usart_flag_get(usart_periph, USART_FLAG_TC) == RESET);
+        usart_data_transmit(usart_periph, data[i]);
+    }
+    while(usart_flag_get(usart_periph, USART_FLAG_TC) == RESET);
+    return len;
+}
+
+/********************************************************************************************************
+//调试串口发送数据
+*********************************************************************************************************/
+void debug_printf(uint32_t usart_periph,char *string)
+{
+    uint8_t  buffer[100];
+    uint16_t len;
+
+    len = strlen(string);
+    strncpy((char*)buffer,string,len);
+    uart_print(usart_periph,buffer,len);
+}
+/********************************************************************************************************
+//1ms定时中断服务程序
+*********************************************************************************************************/
+void TIMER3_IRQHandler(void)
+{
+    if(timer_interrupt_flag_get(TIMER3, TIMER_INT_FLAG_UP))
+    {
+        timer_interrupt_flag_clear(TIMER3, TIMER_INT_FLAG_UP);
+
+        if(delay_count > 0)
+            delay_count--;
+
+        if(time_count++ >= 300)
+        {
+            time_count = 0;
+
+        }
+    }
+}
+
+
+
+/********************************************************************************************************
+//spi2 i2s中断
+*********************************************************************************************************/
+void SPI2_IRQHandler(void)
+{
+    if(SET == spi_i2s_interrupt_flag_get(SPI2,SPI_I2S_INT_TBE))
+    {
+        if(playflag)
+        {
+            spi_i2s_data_transmit(SPI2, playdata[playcnt++]);	//放音
+            if(playcnt >= PLAYCNT)
+            {
+                playflag = 0;
+                playcnt = 0;
+                start_flag = 0;
+            }
+        }
+        else
+        {
+            spi_i2s_data_transmit(SPI2, 0x0000);
+        }
+    }
+
+    if(SET == spi_i2s_interrupt_flag_get(I2S2_ADD,SPI_I2S_INT_RBNE))
+    {
+        playdata[playcnt++] = spi_i2s_data_receive(I2S2_ADD);	//录音
+        if(playcnt >= PLAYCNT)
+        {
+            print_dB(); //------------------------------
+            spi_i2s_interrupt_disable(I2S2_ADD, SPI_I2S_INT_RBNE);
+            record_flag = 1;
+            playcnt = 0;
+        }
+    }
+}
+
+
+
+
+

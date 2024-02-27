@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,GD32F450</Define>
               <Undefine></Undefine>
-              <IncludePath>..\GD32F4xx_Firmware_Library\CMSIS;..\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Include;..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include;..\Application</IncludePath>
+              <IncludePath>..\GD32F4xx_Firmware_Library\CMSIS;..\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Include;..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include;..\Application;..\GD32F450Z_BSP</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -389,11 +389,6 @@
               <FilePath>..\Application\main.c</FilePath>
             </File>
             <File>
-              <FileName>test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Application\test.c</FilePath>
-            </File>
-            <File>
               <FileName>platform_systick.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Application\platform_systick.c</FilePath>
@@ -402,6 +397,11 @@
               <FileName>RGB.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Application\RGB.c</FilePath>
+            </File>
+            <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Application\led.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -572,6 +572,21 @@
               <FileName>system_gd32f4xx.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Source\system_gd32f4xx.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>GD32F450Z_BSP</GroupName>
+          <Files>
+            <File>
+              <FileName>e4.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\GD32F450Z_BSP\e4.c</FilePath>
+            </File>
+            <File>
+              <FileName>i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\GD32F450Z_BSP\i2c.c</FilePath>
             </File>
           </Files>
         </Group>
