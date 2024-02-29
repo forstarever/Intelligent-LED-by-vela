@@ -22,25 +22,39 @@ Dialog DLL:      TCM.DLL V1.53.0.0
  
 <h2>Project:</h2>
 D:\Projects\keil\lab2-gpio-led\MDK-ARM\gpio_led.uvprojx
-Project File Date:  12/21/2023
+Project File Date:  01/17/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\star\software\keilv5\core\ARM\ARMCC\Bin'
 Build target 'U1-GD32F450Z'
-compiling main.c...
-..\Application\main.c(234): warning:  #1-D: last line of file ends without a newline
-  //}
-..\Application\main.c: 1 warning, 0 errors
-compiling RGB.c...
-..\Application\RGB.h(36): warning:  #1295-D: Deprecated declaration ugly_860ns_delay - give arg types
-  void ugly_860ns_delay();
-..\Application\RGB.h(37): warning:  #1295-D: Deprecated declaration ugly_325ns_delay - give arg types
-  void ugly_325ns_delay();
-..\Application\RGB.c: 2 warnings, 0 errors
+compiling led.c...
+..\Application\RGB.h(42): warning:  #1295-D: Deprecated declaration ugly_875ns_delay - give arg types
+  void ugly_875ns_delay();
+..\Application\RGB.h(43): warning:  #1295-D: Deprecated declaration ugly_408ns_delay - give arg types
+  void ugly_408ns_delay();
+..\Application\RGB.h(53): warning:  #1295-D: Deprecated declaration send_green - give arg types
+  void send_green();
+..\Application\RGB.h(54): warning:  #1295-D: Deprecated declaration send_blue - give arg types
+  void send_blue();
+..\Application\RGB.h(55): warning:  #1295-D: Deprecated declaration send_red - give arg types
+  void send_red();
+..\Application\led.h(16): warning:  #1295-D: Deprecated declaration led_init - give arg types
+  void led_init() ;
+..\Application\led.h(17): warning:  #1295-D: Deprecated declaration led_flash - give arg types
+  void led_flash();
+..\Application\led.h(18): warning:  #1295-D: Deprecated declaration test_delayer - give arg types
+  void test_delayer();
+..\Application\led.c(52): warning:  #177-D: variable "j"  was declared but never referenced
+      uint32_t i,j;
+..\Application\led.c(53): warning:  #177-D: variable "in_bit"  was declared but never referenced
+      uint32_t in_bit;
+..\Application\led.c(70): warning:  #550-D: variable "end_time"  was set but never used
+      int start_time=get_systick_ms(),end_time;
+..\Application\led.c: 11 warnings, 0 errors
 linking...
-Program Size: Code=5196 RO-data=460 RW-data=20 ZI-data=5124  
+Program Size: Code=11540 RO-data=524 RW-data=152 ZI-data=21128  
 FromELF: creating hex file...
-".\Objects\gpio_led.axf" - 0 Error(s), 3 Warning(s).
+".\Objects\gpio_led.axf" - 0 Error(s), 11 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -53,7 +67,7 @@ Package Vendor: GigaDevice
   D:\star\software\keilv5\pack\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

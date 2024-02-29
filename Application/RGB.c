@@ -4,13 +4,13 @@
 
 #include "RGB.h"
 
-void ugly_860ns_delay(){
-    unsigned int cnt=30;
+void ugly_875ns_delay(){
+    unsigned int cnt=48;
     while(cnt)
         cnt--;
 }
-void ugly_325ns_delay(){
-    unsigned int cnt=6;
+void ugly_408ns_delay(){
+    unsigned int cnt=20;
     while(cnt)
         cnt--;
 }
@@ -31,17 +31,16 @@ void ugly_325ns_delay(){
 void reset(uint32_t gpio_periph, uint32_t pin)
 {
     gpio_bit_reset(gpio_periph, pin);
-    delay_us(500);
+    delay_us(50);
 //    int i;
 //    for(i=0;i<200;i++)
 //        delay_us(60);// 80us
 }
 
 // 0 255 0  G R B
-void send_green_1(uint32_t gpio_periph, uint32_t pin)
+void send_red_1(uint32_t gpio_periph, uint32_t pin)
 {
     uint32_t i;
-    delay_us(5);
     for(i=0;i<8;i++)
         send0(gpio_periph,pin);
     for(i=0;i<8;i++)
@@ -53,17 +52,15 @@ void send_green_1(uint32_t gpio_periph, uint32_t pin)
 void send_blue_1(uint32_t gpio_periph, uint32_t pin)
 {
     uint32_t i;
-    delay_us(5);
     for(i=0;i<16;i++)
         send0(gpio_periph,pin);
     for(i=0;i<8;i++)
         send1(gpio_periph,pin);
 }
-// 255 0 0
-void send_red_1(uint32_t gpio_periph, uint32_t pin)
+// 255 0 0 G R B
+void send_green_1(uint32_t gpio_periph, uint32_t pin)
 {
     uint32_t i;
-    delay_us(5);
     for(i=0;i<8;i++)
         send1(gpio_periph,pin);
     for(i=0;i<16;i++)
@@ -110,12 +107,12 @@ void send_red()
 {
     send_red_1(GPIOC,GPIO_PIN_10);
 }
-void send_rgb()
+void send_rgb(uint32_t rgb)
 {
-    send_rgb_1(GPIOC,GPIO_PIN_10);
+    send_rgb_1(GPIOC,GPIO_PIN_10, rgb);
 }
 
-void send_led()
+void send_led(uint32_t led[],uint32_t len)
 {
-    send_led_1(GPIOC,GPIO_PIN_10);
+    send_led_1(GPIOC,GPIO_PIN_10,led,len);
 }

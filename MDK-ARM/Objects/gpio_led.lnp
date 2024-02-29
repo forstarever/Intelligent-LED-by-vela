@@ -1,8 +1,8 @@
 --cpu=Cortex-M4.fp.sp
 ".\objects\main.o"
-".\objects\test.o"
 ".\objects\platform_systick.o"
 ".\objects\rgb.o"
+".\objects\led.o"
 ".\objects\gd32f4xx_adc.o"
 ".\objects\gd32f4xx_can.o"
 ".\objects\gd32f4xx_crc.o"
@@ -34,6 +34,8 @@
 ".\objects\gd32f4xx_wwdgt.o"
 ".\objects\startup_gd32f450_470.o"
 ".\objects\system_gd32f4xx.o"
+".\objects\e4.o"
+".\objects\i2c.o"
 --library_type=microlib --strict --scatter ".\Objects\gpio_led.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

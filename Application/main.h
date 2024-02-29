@@ -11,7 +11,6 @@
 #include "gd32f4xx.h"
 #include "stdint.h"
 
-
 #define  LED_ON    (GPIO_BOP(GPIOF) = GPIO_PIN_4)
 #define  LED_OFF   (GPIO_BC(GPIOF) = GPIO_PIN_4)
 

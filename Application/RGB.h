@@ -2,8 +2,8 @@
 // Created by star on 2023/12/20.
 //
 
-#ifndef LAB2_GPIO_LED_RGB_H
-#define LAB2_GPIO_LED_RGB_H
+#ifndef RGB_H
+#define RGB_H
 
 #include <stdint.h>
 #include "gd32f4xx.h"
@@ -18,23 +18,29 @@ typedef struct {
 
 #define send0(gpio_periph,pin) { \
 GPIO_BOP(GPIOC)=(uint32_t)GPIO_PIN_10;\
-ugly_325ns_delay();\
+ugly_408ns_delay();\
 GPIO_BC(GPIOC)=(uint32_t)GPIO_PIN_10;\
-ugly_860ns_delay();              \
+ugly_875ns_delay();              \
 }\
 
 #define send1(gpio_periph,pin) { \
 GPIO_BOP(GPIOC)=(uint32_t)GPIO_PIN_10;\
-ugly_860ns_delay();\
+ugly_875ns_delay();\
 GPIO_BC(GPIOC)=(uint32_t)GPIO_PIN_10;\
-ugly_325ns_delay();              \
+ugly_408ns_delay();              \
+}                                \
+
+#define sendtest(gpio_periph,pin) { \
+GPIO_BOP(GPIOC)=(uint32_t)GPIO_PIN_10;\
+ugly_875ns_delay();\
+GPIO_BC(GPIOC)=(uint32_t)GPIO_PIN_10;\
+ugly_408ns_delay();              \
 }\
 
 
 
-
-void ugly_860ns_delay();
-void ugly_325ns_delay();
+void ugly_875ns_delay();
+void ugly_408ns_delay();
 //void send0(uint32_t gpio_periph, uint32_t pin);
 //void send1(uint32_t gpio_periph, uint32_t pin);
 void reset(uint32_t gpio_periph, uint32_t pin);
@@ -47,7 +53,7 @@ void send_led_1(uint32_t gpio_periph, uint32_t pin,uint32_t led[],uint32_t len);
 void send_green();
 void send_blue();
 void send_red();
-void send_rgb();
-void send_led();
+void send_rgb(uint32_t rgb);
+void send_led(uint32_t led[],uint32_t len);
 
 #endif //LAB2_GPIO_LED_RGB_H
