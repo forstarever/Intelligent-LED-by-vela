@@ -27,7 +27,7 @@ Project File Date:  01/17/2024
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\star\software\keilv5\core\ARM\ARMCC\Bin'
 Build target 'U1-GD32F450Z'
-compiling led.c...
+compiling main.c...
 ..\Application\RGB.h(42): warning:  #1295-D: Deprecated declaration ugly_875ns_delay - give arg types
   void ugly_875ns_delay();
 ..\Application\RGB.h(43): warning:  #1295-D: Deprecated declaration ugly_408ns_delay - give arg types
@@ -44,17 +44,13 @@ compiling led.c...
   void led_flash();
 ..\Application\led.h(18): warning:  #1295-D: Deprecated declaration test_delayer - give arg types
   void test_delayer();
-..\Application\led.c(52): warning:  #177-D: variable "j"  was declared but never referenced
-      uint32_t i,j;
-..\Application\led.c(53): warning:  #177-D: variable "in_bit"  was declared but never referenced
-      uint32_t in_bit;
-..\Application\led.c(70): warning:  #550-D: variable "end_time"  was set but never used
-      int start_time=get_systick_ms(),end_time;
-..\Application\led.c: 11 warnings, 0 errors
+..\Application\main.c(96): warning:  #167-D: argument of type "int *" is incompatible with parameter of type "uint32_t *"
+      send_led(colorBuffer,30);
+..\Application\main.c: 9 warnings, 0 errors
 linking...
-Program Size: Code=11540 RO-data=524 RW-data=152 ZI-data=21128  
+Program Size: Code=11780 RO-data=524 RW-data=152 ZI-data=8448  
 FromELF: creating hex file...
-".\Objects\gpio_led.axf" - 0 Error(s), 11 Warning(s).
+".\Objects\gpio_led.axf" - 0 Error(s), 9 Warning(s).
 
 <h2>Software Packages used:</h2>
 

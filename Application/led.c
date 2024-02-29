@@ -55,7 +55,7 @@ void test_delayer(){
 //    reset(GPIOF, GPIO_PIN_4);
 //    while (1) {
 ////		test_delayer();
-//        printf("time=%d\n",get_systick_ms());
+//        //printf("time=%d\n",get_systick_ms());
 //        led_flash();
 //    }
 //}

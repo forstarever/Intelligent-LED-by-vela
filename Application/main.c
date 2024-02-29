@@ -12,7 +12,6 @@
 #include "stdio.h"
 #include "string.h"
 #include "e4.h"
-#include "led.h"
 
 //-----------debug----------// need-for-printf
 typedef struct print_buffer
@@ -71,6 +70,7 @@ double calculateDB() {
     return 20.0 * log10(rms / REFERENCE_PRESSURE);
 }
 
+int colorBuffer[31];
 void print_dB(void) {
     double decibels = calculateDB();
     printf("%lf dB\n", decibels);
@@ -78,19 +78,34 @@ void print_dB(void) {
     //for(size_t i = 0; i < playcnt; ++i) if((double)playdata[i] < MAX_PCM_VALUE)
     //	printf("%d ", (int)playdata[i]);
 
+    for(int i=29;i>0;i--)
+        colorBuffer[i]=colorBuffer[i-1];
+
     if (decibels >= 55 && decibels < 64) {
-        send_red();
+        colorBuffer[0]=0x00ff00;
     }
     else if (decibels >= 64 && decibels < 67) {
-        send_blue();
+        colorBuffer[0]=0x0000ff;
     }
     else if (decibels >= 67 && decibels < 75) {
-        send_green();
+        colorBuffer[0]=0xff0000;
+    }else{
+        colorBuffer[0]=0xffffff;
     }
+    colorBuffer[0]=(colorBuffer[0]+colorBuffer[1])/2;
+    send_led(colorBuffer,30);
+
 }
 
 int main(void)
 {
+    led_init();
+    for(int i=0;i<720;i++){
+        send1(GPIOC,GPIO_PIN_10);
+    }
+    for(int i=0;i<30;i++)
+        colorBuffer[i]=0xFFFFFF;
+
     printf("Hello World!\n\n");
     nvic_priority_group_set(NVIC_PRIGROUP_PRE4_SUB0);
 
@@ -113,7 +128,7 @@ int main(void)
             if(record_flag)
             {
                 record_flag = 0;
-                e4_playback_config();
+//                e4_playback_config();
                 playflag = 1;
                 LED_ON;
             }

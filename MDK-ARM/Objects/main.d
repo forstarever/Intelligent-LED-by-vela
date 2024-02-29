@@ -39,11 +39,11 @@
 .\objects\main.o: ..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_ipa.h
 .\objects\main.o: ..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include\gd32f4xx_tli.h
 .\objects\main.o: ..\Application\main.h
-.\objects\main.o: ..\GD32F4xx_Firmware_Library\CMSIS\i2c.h
-.\objects\main.o: D:\star\software\keilv5\core\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\main.o: D:\star\software\keilv5\core\ARM\ARMCC\Bin\..\include\string.h
-.\objects\main.o: ..\GD32F4xx_Firmware_Library\CMSIS\e4.h
 .\objects\main.o: ..\Application\led.h
+.\objects\main.o: D:\star\software\keilv5\core\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: ..\Application\platform_systick.h
 .\objects\main.o: ..\Application\RGB.h
+.\objects\main.o: ..\GD32F4xx_Firmware_Library\CMSIS\i2c.h
+.\objects\main.o: D:\star\software\keilv5\core\ARM\ARMCC\Bin\..\include\string.h
+.\objects\main.o: ..\GD32F4xx_Firmware_Library\CMSIS\e4.h
 .\objects\main.o: D:\star\software\keilv5\core\ARM\ARMCC\Bin\..\include\math.h
