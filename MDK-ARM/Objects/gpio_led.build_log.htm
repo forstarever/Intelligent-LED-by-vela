@@ -46,11 +46,13 @@ compiling main.c...
   void test_delayer();
 ..\Application\main.c(96): warning:  #167-D: argument of type "int *" is incompatible with parameter of type "uint32_t *"
       send_led(colorBuffer,30);
-..\Application\main.c: 9 warnings, 0 errors
+..\Application\main.c(117): warning:  #167-D: argument of type "int *" is incompatible with parameter of type "uint32_t *"
+      send_led(colorBuffer,30);
+..\Application\main.c: 10 warnings, 0 errors
 linking...
-Program Size: Code=11780 RO-data=524 RW-data=152 ZI-data=8448  
+Program Size: Code=9972 RO-data=524 RW-data=156 ZI-data=44452  
 FromELF: creating hex file...
-".\Objects\gpio_led.axf" - 0 Error(s), 9 Warning(s).
+".\Objects\gpio_led.axf" - 0 Error(s), 10 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -63,7 +65,7 @@ Package Vendor: GigaDevice
   D:\star\software\keilv5\pack\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

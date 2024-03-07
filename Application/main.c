@@ -16,7 +16,7 @@
 //-----------debug----------// need-for-printf
 typedef struct print_buffer
 {
-    char buf[4096];
+    char buf[40096];
     int idx;
 } print_buffer;
 print_buffer stdio_print_buf;
@@ -97,6 +97,35 @@ void print_dB(void) {
 
 }
 
+//久坐提醒
+uint8_t getSeatStatus(){
+    return 1;
+}
+int seatMin=0;
+void spark(){
+    int T=5;
+    while(T--){
+        for(int i=0;i<30;i++){
+            send_rgb(0);
+        }
+        delay_ms_1(100);
+        for (int i = 0; i <30; ++i) {
+            send_rgb(0xffffff);
+        }
+        delay_ms_1(100);
+    }
+    send_led(colorBuffer,30);
+}
+void seatTimer(){
+    if(getSeatStatus())
+        seatMin++;
+    else seatMin=0;
+    if(seatMin>=10){
+        spark();
+        seatMin=0;
+    }
+}
+
 int main(void)
 {
     led_init();
@@ -112,7 +141,7 @@ int main(void)
     dis_led_init();
     e4_init();
 
-    while(1)
+    while(0)
     {
         if(start_flag == 0)
         {
@@ -134,8 +163,11 @@ int main(void)
             }
         }
     }
+    while(1){
+        seatTimer();
+        delay_ms_1(1000);
+    }
 }
-
 
 
 /***********************************************************************************************************
