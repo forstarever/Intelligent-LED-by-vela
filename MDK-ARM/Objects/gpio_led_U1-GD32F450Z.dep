@@ -1,6 +1,6 @@
 Dependencies for Project 'gpio_led', Target 'U1-GD32F450Z': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
-F (..\Application\main.c)(0x65EAF72E)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\GD32F4xx_Firmware_Library\CMSIS -I ..\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Include -I ..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include -I ..\Application -I ..\GD32F450Z_BSP-ID:\star\software\keilv5\pack\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include-D__UVISION_VERSION="536" -DGD32F450 -DUSE_STDPERIPH_DRIVER -DGD32F450-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (..\Application\main.c)(0x65EAFA16)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\GD32F4xx_Firmware_Library\CMSIS -I ..\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Include -I ..\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include -I ..\Application -I ..\GD32F450Z_BSP-ID:\star\software\keilv5\pack\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include-D__UVISION_VERSION="536" -DGD32F450 -DUSE_STDPERIPH_DRIVER -DGD32F450-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (..\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Include\gd32f4xx.h)(0x6406F2A5)
 I (..\GD32F4xx_Firmware_Library\CMSIS\core_cm4.h)(0x6406F2A5)
 I (D:\star\software\keilv5\core\ARM\ARMCC\include\stdint.h)(0x6025237E)

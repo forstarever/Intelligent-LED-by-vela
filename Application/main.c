@@ -83,7 +83,7 @@ void spark(){
         for(int i=0;i<30;i++){
             send_rgb(0);
         }
-				printf("shit\n");
+        printf("shit\n");
         delay_ms_1(500);
 				printf("shit\n");
         for (int i = 0; i <30; ++i) {
@@ -123,9 +123,14 @@ void print_dB(void) {
     }
     else if (decibels >= 67 && decibels < 75) {
         colorBuffer[0]=0xff0000;
-    }else{
-        colorBuffer[0]=0xffffff;
-        spark();
+    }
+    else if (decibels<82) {
+        colorBuffer[0] = 0xffffff;
+    }
+    else{
+//        spark();
+        for(int i=0;i<30;i++)
+            colorBuffer[i]=0;
     }
     colorBuffer[0]=(colorBuffer[0]+colorBuffer[1])/2;
     send_led(colorBuffer,30);
