@@ -17,24 +17,21 @@ void ugly_408ns_delay(){
 //void send0(uint32_t gpio_periph, uint32_t pin)
 //{
 //    GPIO_BOP(GPIOC)=(uint32_t)GPIO_PIN_10;
-//    ugly_325ns_delay();
+//    ugly_408ns_delay();
 //    GPIO_BC(GPIOC)=(uint32_t)GPIO_PIN_10;
-//    ugly_860ns_delay();
+//    ugly_875ns_delay();
 //}
 //void send1(uint32_t gpio_periph, uint32_t pin)
 //{
 //    GPIO_BOP(GPIOC)=(uint32_t)GPIO_PIN_10;
-//    ugly_860ns_delay();
+//    ugly_875ns_delay();
 //    GPIO_BC(GPIOC)=(uint32_t)GPIO_PIN_10;
-//    ugly_325ns_delay();
+//    ugly_408ns_delay();
 //}
 void reset(uint32_t gpio_periph, uint32_t pin)
 {
     gpio_bit_reset(gpio_periph, pin);
     delay_us(50);
-//    int i;
-//    for(i=0;i<200;i++)
-//        delay_us(60);// 80us
 }
 
 // 0 255 0  G R B

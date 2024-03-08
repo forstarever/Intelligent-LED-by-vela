@@ -19,7 +19,7 @@
 
 void timer3_init(void);
 void  dis_led_init(void);
-void delay_ms(uint16_t mstime);
+//void delay_ms(uint16_t mstime);
 uint16_t uart_print(uint32_t usart_periph, uint8_t *data, uint16_t len);
 void debug_printf(uint32_t usart_periph,char *string);
 

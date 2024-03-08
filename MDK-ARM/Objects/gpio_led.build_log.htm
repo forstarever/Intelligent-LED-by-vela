@@ -32,11 +32,11 @@ compiling main.c...
   void ugly_875ns_delay();
 ..\Application\RGB.h(43): warning:  #1295-D: Deprecated declaration ugly_408ns_delay - give arg types
   void ugly_408ns_delay();
-..\Application\RGB.h(53): warning:  #1295-D: Deprecated declaration send_green - give arg types
+..\Application\RGB.h(52): warning:  #1295-D: Deprecated declaration send_green - give arg types
   void send_green();
-..\Application\RGB.h(54): warning:  #1295-D: Deprecated declaration send_blue - give arg types
+..\Application\RGB.h(53): warning:  #1295-D: Deprecated declaration send_blue - give arg types
   void send_blue();
-..\Application\RGB.h(55): warning:  #1295-D: Deprecated declaration send_red - give arg types
+..\Application\RGB.h(54): warning:  #1295-D: Deprecated declaration send_red - give arg types
   void send_red();
 ..\Application\led.h(16): warning:  #1295-D: Deprecated declaration led_init - give arg types
   void led_init() ;
@@ -46,13 +46,15 @@ compiling main.c...
   void test_delayer();
 ..\Application\main.c(96): warning:  #167-D: argument of type "int *" is incompatible with parameter of type "uint32_t *"
       send_led(colorBuffer,30);
-..\Application\main.c(117): warning:  #167-D: argument of type "int *" is incompatible with parameter of type "uint32_t *"
+..\Application\main.c(131): warning:  #167-D: argument of type "int *" is incompatible with parameter of type "uint32_t *"
       send_led(colorBuffer,30);
-..\Application\main.c: 10 warnings, 0 errors
+..\Application\main.c(173): warning:  #128-D: loop is not reachable
+      while(0){
+..\Application\main.c: 11 warnings, 0 errors
 linking...
-Program Size: Code=9972 RO-data=524 RW-data=156 ZI-data=44452  
+Program Size: Code=12068 RO-data=524 RW-data=156 ZI-data=44452  
 FromELF: creating hex file...
-".\Objects\gpio_led.axf" - 0 Error(s), 10 Warning(s).
+".\Objects\gpio_led.axf" - 0 Error(s), 11 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -65,7 +67,7 @@ Package Vendor: GigaDevice
   D:\star\software\keilv5\pack\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

@@ -44,12 +44,11 @@ void ugly_408ns_delay();
 //void send0(uint32_t gpio_periph, uint32_t pin);
 //void send1(uint32_t gpio_periph, uint32_t pin);
 void reset(uint32_t gpio_periph, uint32_t pin);
-void send_blue_1(uint32_t gpio_periph, uint32_t pin);
-void send_green_1(uint32_t gpio_periph, uint32_t pin);
-void send_red_1(uint32_t gpio_periph, uint32_t pin);
-
-void send_rgb_1(uint32_t gpio_periph, uint32_t pin,uint32_t rgb);
-void send_led_1(uint32_t gpio_periph, uint32_t pin,uint32_t led[],uint32_t len);
+//void send_blue_1(uint32_t gpio_periph, uint32_t pin);
+//void send_green_1(uint32_t gpio_periph, uint32_t pin);
+//void send_red_1(uint32_t gpio_periph, uint32_t pin);
+//void send_rgb_1(uint32_t gpio_periph, uint32_t pin,uint32_t rgb);
+//void send_led_1(uint32_t gpio_periph, uint32_t pin,uint32_t led[],uint32_t len);
 void send_green();
 void send_blue();
 void send_red();

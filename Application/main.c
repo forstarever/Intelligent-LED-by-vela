@@ -71,6 +71,40 @@ double calculateDB() {
 }
 
 int colorBuffer[31];
+
+//久坐提醒
+uint8_t getSeatStatus(){
+    return 1;
+}
+int seatMin=0;
+void spark(){
+    int T=5;
+    while(T--){
+        for(int i=0;i<30;i++){
+            send_rgb(0);
+        }
+				printf("shit\n");
+        delay_ms_1(500);
+				printf("shit\n");
+        for (int i = 0; i <30; ++i) {
+            send_rgb(0xffffff);
+        }
+				printf("shit\n");
+        delay_ms_1(500);
+				printf("shit\n");
+    }
+    send_led(colorBuffer,30);
+}
+void seatTimer(){
+    if(getSeatStatus())
+        seatMin++;
+    else seatMin=0;
+    if(seatMin>=10){
+        spark();
+        seatMin=0;
+    }
+}
+
 void print_dB(void) {
     double decibels = calculateDB();
     printf("%lf dB\n", decibels);
@@ -91,40 +125,13 @@ void print_dB(void) {
         colorBuffer[0]=0xff0000;
     }else{
         colorBuffer[0]=0xffffff;
+        spark();
     }
     colorBuffer[0]=(colorBuffer[0]+colorBuffer[1])/2;
     send_led(colorBuffer,30);
 
 }
 
-//久坐提醒
-uint8_t getSeatStatus(){
-    return 1;
-}
-int seatMin=0;
-void spark(){
-    int T=5;
-    while(T--){
-        for(int i=0;i<30;i++){
-            send_rgb(0);
-        }
-        delay_ms_1(100);
-        for (int i = 0; i <30; ++i) {
-            send_rgb(0xffffff);
-        }
-        delay_ms_1(100);
-    }
-    send_led(colorBuffer,30);
-}
-void seatTimer(){
-    if(getSeatStatus())
-        seatMin++;
-    else seatMin=0;
-    if(seatMin>=10){
-        spark();
-        seatMin=0;
-    }
-}
 
 int main(void)
 {
@@ -141,7 +148,7 @@ int main(void)
     dis_led_init();
     e4_init();
 
-    while(0)
+    while(1)
     {
         if(start_flag == 0)
         {
@@ -163,7 +170,7 @@ int main(void)
             }
         }
     }
-    while(1){
+    while(0){
         seatTimer();
         delay_ms_1(1000);
     }
